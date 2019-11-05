@@ -1,24 +1,24 @@
 ---
-title: 如何使用git
+title: git的基本使用（一）
 categories:
 - 工具
 tags:
 - git
 ---
 
-# git
+# Git
 
- Git is a [free and open source](https://git-scm.com/about/free-and-open-source) distributed version control system 
+ [Git](https://git-scm.com) is a free and open source distributed version control system 
 
-git是一个免费开源的分布式版本控制系统
+git是一个免费开源的分布式版本控制系统，用于快速高效地处理从小型到大型的项目
 
-### git用途
+### Git用途
 
 * 托管代码到远程
 * 版本控制（文件快照）
 * 团队协作
 
-### git托管平台
+### Git代码托管平台
 
 * github：  [https://github.com](https://github.com/) 
 * coding： https://dev.tencent.com/ 
@@ -27,6 +27,8 @@ git是一个免费开源的分布式版本控制系统
 
 
 **workspace**（本地工作空间）  ---add---> **Index**（暂存区）   ---commit--->   **repository**（本地版本库）   ---push---> **remote**（远程版本库）
+
+![](/img/git示意图.jpg)
 
 
 

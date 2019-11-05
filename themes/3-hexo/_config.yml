@@ -66,7 +66,7 @@ bottom_text: ©2017-2020 Dary
 reward: true
 # true 开启打赏功能
 
-searchAll: false
+searchAll: true
 # true 启用全文搜索
 # 开启此功能需要下面操作：
 # 1. 在 hexo 根目录 执行 npm install hexo-generator-search --save 安装插件
@@ -79,7 +79,7 @@ searchAll: false
 copyright: true
 # Copyright info. of post | 文末版权信息
 
-word_count: false
+word_count: true
 # true 开启字数统计
 # 开启此功能需要安装插件 ：在 hexo根目录 执行npm i hexo-wordcount --save
 
