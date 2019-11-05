@@ -5,15 +5,15 @@
 # Site
 title: 熊大林的博客
 subtitle:
-description:
-keywords:
+description: 分享技术文章，主要是web前端相关的
+keywords: html5 css3 javascript vue react
 author: Dary
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://www.xiongdalin.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -60,8 +60,8 @@ index_generator:
 
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+category_map: ['大前端', '工具', '数据库']
+tag_map: ['html5', 'css3', 'javascript', 'jquery', 'vue', 'node', 'react', 'mysql', 'mongodb', 'ajax', 'git']
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta

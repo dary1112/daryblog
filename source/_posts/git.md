@@ -1,5 +1,9 @@
 ---
 title: 如何使用git
+categories:
+- 工具
+tags:
+- git
 ---
 
 # git
