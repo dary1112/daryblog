@@ -133,7 +133,7 @@ index_bg_img:
 other_bg_img:
 
 # 点击图片放大样式
-img_resize: default
+img_resize: photoSwipe
 # 可选值：
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
@@ -148,7 +148,7 @@ code:
 highlight:
   on: true # true开启代码高亮
   lineNum: true # true显示行号
-  theme: atom-light
+  theme: zenbum
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
 # sublime : 参考sublime的高亮主题
