@@ -122,13 +122,3 @@ tags:
 * 远程代码和本地代码要保持统一
 * .git 文件不能嵌套（仓库不能嵌套）
 
-<br />
-
-<br />
-
-<p style="color:#696969;text-align:right;font-face:宋体">有逼格的一句话</p>
-
-<p style="color:#808080;text-align:right;font-face:宋体"><small>2019/11/06 Dary记</small></p>
-
-
-
