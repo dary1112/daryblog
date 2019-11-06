@@ -57,7 +57,7 @@ menu:
       type: 3  # 跳转类型 3：打开新的tab页
 
 # 文末声明
-article_txt: 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 dary1112@foxmail.com
+article_txt: 转载请注明来源，文末有原始链接。欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 dary1112@foxmail.com
 
 bottom_text: ©2017-2020 Dary
 # 自定义页面最下方的站点版权信息
@@ -108,7 +108,7 @@ article_list:
 # 文章列表背景图
 article_bg_img:
   on: true # 是否开启
-  src: https://i.loli.net/2019/07/22/5d3521411f3f169375.png
+  src: /img/article-list-background.jpg
   opacity: 0.3 # 背景图透明度，范围 0 ～ 1
 
 # 列表样式
