@@ -12,19 +12,17 @@ tags:
 
 > [Git](https://git-scm.com 'https://git-scm.com') is a free and open source distributed version control system 
 >
-> Git是一个免费开源的分布式版本控制系统，用于快速高效地处理从小型到大型的项目。
+> Git是一个免费开源的分布式版本控制系统，用于快速高效地处理各种小型到大型的项目。
 
 
 
-### Git用途
+## Git用途
 
-* 托管代码到远程，分布式托管，避免本机磁盘损坏造成不可挽回的局面。
-* 版本控制，可以发布多个版本并且实现在各个版本之间来回穿梭（实现方式：文件快照，每个版本都会有一个文件快照，比直接备份文件快速便捷）。
-* 团队协作，强大的分支功能，可以快速实现团队协作。
+1. 托管代码到远程，分布式托管，避免本机磁盘损坏造成不可挽回的局面。
+2. 版本控制，可以发布多个版本并且实现在各个版本之间来回穿梭（实现方式：文件快照，每个版本都会有一个文件快照，比直接备份文件快速便捷）。
+3. 团队协作，强大的分支功能，可以快速实现团队协作。
 
-
-
-### Git代码托管平台
+## Git代码托管平台
 
 * github：  [https://github.com](https://github.com/ 'https://github.com/')
 
@@ -40,25 +38,23 @@ tags:
 
    
 
-### Git工作流程示意图
-
-
+## Git工作流程示意图
 
 ![](/img/git示意图.jpg)
 
-##### 概念介绍
+### 概念介绍
 * workspace：本地工作空间
 * Index：暂存区
 * repository：本地版本库
 * remote：远程版本库
 
-##### 工作流程
+### 工作流程
 
 要实现代码托管，需要在本地init一个本地版本库，通过 *add* 命令添加到暂存区，然后 *commit*提交到本地版本库（每一次提交都会产生一个新的版本），最后通过*push*推送到远程。
 
 
 
-### Git使用步骤
+## Git使用步骤
 
 ​	*本次以gitee为例做讲解，读者也可以选择github或者coding，使用步骤一致*
 
@@ -92,39 +88,33 @@ tags:
 
 7. 将本地仓库和线上仓库建立关联：`git remote add origin [线上仓库的SSH地址]`
 
-   ​	如果在执行这句话的时候报错：`fatal: remote origin already exists.`
+   ​	<small>如果在执行这句话的时候报错：`fatal: remote origin already exists.`</small>
 
-   ​	那么就先执行 `git remote rm origin`
+   ​	<small>那么就先执行 `git remote rm origin`</small>
 
-   ​	再重新执行`git remote add origin [线上仓库的SSH地址]`
-
+   ​	<small>再重新执行 `git remote add origin [线上仓库的SSH地址]`</small>
 8. 代码添加到暂存区  `git add -A`  (也可以 git add [文件名] 来单独添加某一个文件)
-
 9. 代码提交到本地版本库  `git commit -m '[说明本次提交所作的操作，越详细越好]' `
-
 10. 代码推送到远程 `git push origin master`
 
-    
+## 附录1：Git常见命令
+* `git init`&nbsp;&nbsp;&nbsp;&nbsp;初始化仓库
+* `git config`&nbsp;&nbsp;&nbsp;&nbsp;配置用户信息
+* `git remote`&nbsp;&nbsp;&nbsp;&nbsp;新增或者删除远程仓库的关联
+* `git add`&nbsp;&nbsp;&nbsp;&nbsp;添加到暂存区
+* `git commit`&nbsp;&nbsp;&nbsp;&nbsp;代码提交（每一次commit都会有一个新的版本号）
+* `git push`&nbsp;&nbsp;&nbsp;&nbsp;推送到远程仓库
+* `git status`&nbsp;&nbsp;&nbsp;&nbsp;查看当前仓库的状态
+* `git log`&nbsp;&nbsp;&nbsp;&nbsp;查看日志（每一个commit在这里都能查看到，而且commit后面的随机字符串就是版本号），按字母q 退出log
+* `git reset --hard [要回退的版本号]`&nbsp;&nbsp;&nbsp;&nbsp;回退到之前的某一个版本
+* `git clone [线上仓库的https地址]`&nbsp;&nbsp;&nbsp;&nbsp;把线上仓库代码克隆到本地
+* `git pull`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码
 
-### 附录1：Git常见命令
-
-* `git init`  初始化仓库
-* `git config`  配置用户信息
-* `git remote`  新增或者删除远程仓库的关联
-* `git add`  添加到暂存区
-* `git commit`  代码提交（每一次commit都会有一个新的版本号）
-* `git push` 推送到远程仓库
-* `git status`  查看当前仓库的状态
-* `git log`  查看日志（每一个commit在这里都能查看到，而且commit后面的随机字符串就是版本号），按字母q 退出log
-* `git reset --hard [要回退的版本号]`   回退到之前的某一个版本
-* `git clone [线上仓库的https地址]`  把线上仓库代码克隆到本地
-* `git pull`  在已有的仓库基础上拉取最新的线上代码
-
-
-
-### 附录2：使用Git时候的一些注意事项
-
+## 附录2：使用Git时候的一些注意事项
 * 一个本地仓库对应一个远程仓库
 * 远程代码和本地代码要保持统一
 * .git 文件不能嵌套（仓库不能嵌套）
 
+<br />
+<br />
+<br />
