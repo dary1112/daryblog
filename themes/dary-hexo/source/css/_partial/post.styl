@@ -136,11 +136,16 @@
               &:before
                 border-right-color#7B5D5F
       .article-title
+        font-weight: 700
         margin 0
         font-size 1.8em
         border-bottom 0px
         line-height: 31px
-        margin-bottom: 10px
+        margin-bottom: 30px
+        +p
+          color: #666
+          +p
+            color: #666
       .toc-ref
         display none
       a
@@ -218,6 +223,8 @@
             border 1px solid #ddd
             text-align left
             margin 0
+            color #333
+            font-size 14px
             padding 6px 13px
             &:first-child, &:last-child
               margin-top: 0
@@ -230,11 +237,11 @@
               color #fff
               font-weight bold
               background-color #5DB084
-        &.green_title
+        &.dary_title
           tr th
-            color: #eee;
-            border: 1px solid #009688
-            background-color: #009688
+            color: #666;
+            border: 1px solid #D1EFEC
+            background-color: #D1EFEC
       /* Inline code */
       :not(pre) > code
         color #BF1827
@@ -301,14 +308,13 @@
   .article_copyright
     padding 5px 30px
     margin-bottom 20px
-    background-color #83b3c1
+    background-color #ddd
     border-radius 8px
-    font-weight 700
-    line-height 22px
-    color #444
-    font-size 16px
+    line-height 28px
+    color #999
+    font-size 14px
     .copy-title
-      color: #000
+      color: #333
       margin-right: 10px
     &>p
       margin 0

@@ -122,7 +122,7 @@ blockquote: github
 # bracket : 类似于左右两个大括号的样式
 
 # table 的样式
-table: green_title
+table: dary_title
 # 为空时类似github的table样式
 # green 绿色样式
 # green_title 头部为青色的table样式
