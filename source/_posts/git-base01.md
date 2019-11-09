@@ -40,7 +40,7 @@ tags:
 
 ## Git工作流程
 
-![](/img/git示意图.jpg 'git流程示意图')
+![](/img/article/git示意图.jpg 'git流程示意图')
 
 ### 概念介绍
 * workspace：本地工作空间
