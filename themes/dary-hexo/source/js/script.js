@@ -67,7 +67,7 @@ function afterPjax() {
     }
 
     /*渲染高亮代码块结构与样式*/
-    $('pre code').each(function (i, block) {
+    $('.code').each(function (i, block) {
         hljs.highlightBlock(block);
     });
     /*新内容淡入*/

@@ -98,7 +98,7 @@ toc:
 
 #文章列表 鼠标移上去的样式, 为空时使用默认效果
 article_list:
-  title: '#383636' # 文章列表标题颜色
+  title: '#333' # 文章列表标题颜色
   datetime: '#5e5e5f' # 文章发布日期颜色
   hover:
     background: '#e2e0e0'  # 背景色:提供几种：'#c1bfc1'  '#fbf4a8'
@@ -147,8 +147,8 @@ code:
 
 highlight:
   on: true # true开启代码高亮
-  lineNum: true # true显示行号
-  theme: zenbum
+  lineNum: false # true显示行号
+  theme: github
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
 # sublime : 参考sublime的高亮主题
@@ -226,13 +226,13 @@ gitalk:
 
 ##############################
 
-##########CND设置#############
+##########CDN设置#############
 CDN:
   jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
   jquery_cookie: //cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
   jquery_ui: //cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js
   jquery_ui_css: //cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css
-  highlight: //cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js
+  highlight: //cdn.bootcss.com/highlight.js/8.9.1/highlight.min.js
   pjax: //cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js
   animate: //cdn.bootcss.com/animate.css/3.5.2/animate.min.css
   font_awsome: //cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
