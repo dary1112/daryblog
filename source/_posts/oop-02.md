@@ -63,7 +63,7 @@ console.log(dary.intro === brendan.intro) // true
 
 当我们把intro方法写在构造函数的原型上的时候，我们看到每一个通过Person实例化出来的对象都会调用同一个原型上的intro方法。也就是说，intro方法并不属于某一个实例，dary和brendan这两个对象本身都应该没有intro方法，我们在浏览器控制台打印了这两个对象也发现了这一点：
 
-![](\img\article\原型console截图.png)
+![](/img/article/原型console截图.png)
 
 但是我们看到，实例对象除了自己本身有的属性name个age以外，还有一个`__proto__`属性，这个属性是不可枚举的，但是大部分浏览器都可以直接输出并且使用它。从这实例对象的这个属性里我们都发现了intro，所以处于好奇，我们输出一下它们俩：
 
@@ -91,7 +91,7 @@ console.log(Person.prototype.constructor === Person) // true
 
 由此，我们可以得到如下图所示的关系：
 
-
+![](/img/article/原型示意图.png)
 
 由此图我们可以看出：当dary要访问某个属性或者方法的是，应该先从自己身上查找，如果有，则直接使用，如果没有，则从 \_\_proto\_\_ 属性找到了Person.prototype，可以调用Person.prototype上的方法。
 
@@ -109,7 +109,7 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
 
 由此，我们可以得到下图：
 
-
+![](/img/article/原型链示意图.png)
 
 那Object.prototype不也是一个普通对象么？那它的\_\_proto\_\_ 呢？
 
