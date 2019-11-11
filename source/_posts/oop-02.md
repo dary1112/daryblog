@@ -121,7 +121,7 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
 
 
 
-###附上几个与原型相关的常用属性和方法列表
+### 附上几个与原型相关的常用属性和方法列表
 
 + `prototype` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造函数的原型
 
