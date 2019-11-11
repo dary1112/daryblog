@@ -115,4 +115,38 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
 
 我试着console了一下`Object.prototype.__proto__ `，结果得到了`null`，我想这应该是Javascript故意这么设计的吧。
 
-所以，**原型（prototype）**是函数的伴生体，实例的 \_\_proto\_\_  指向构造函数的prototype。
+所以，**原型（prototype）**是函数的伴生体，实例的 \_\_proto\_\_  指向构造函数的prototype，Object.prototype.\_\_proto\_\_ === null。记住这两句，原型你就明白了一大半了。
+
+并且，文章读到这里，我们也就能明白**Javascript一切皆为对象**这句话的真正含义了，因为Javascript中任意数据都能沿着自己的原型链最终找到`Object.prototype` ，任意数据都能调用Object.prototype上的方法。
+
+
+
+###附上几个与原型相关的常用属性和方法列表
+
++ `prototype` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造函数的原型
+
++ `__proto__`也叫 `[[prototype]]`     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 隐式原型，实例对象上的属性，指向构造函数的prototype
+
++ `instanceof` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运算符，判断一个对象是否是构造函数的实例
+
+  ```javascript
+  console.log(dary instanceof Person) // true
+  console.log(dary instanceof Object) // true
+  ```
+
++   hasOwnProperty   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  判断对象上是否存在某个属性，并且这个方法会过滤到原型上的属性
+
+  ```javascript
+  console.log(dary.hasOwnProperty('name')) // true
+  console.log(dary.hasOwnProperty('intro')) // false
+  console.log(dary.hasOwnProperty('abc')) // false
+  ```
+
++   isPrototypeOf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查一个对象是否存在于另一个对象的原型链上
+
+  ```javascript
+  console.log(Person.prototype.isPrototypeOf(dary)) // true
+  console.log(Object.prototype.isPrototypeOf(dary)) // true
+  ```
+
+  

@@ -147,7 +147,7 @@ code:
 
 highlight:
   on: true # true开启代码高亮
-  lineNum: false # true显示行号
+  lineNum: true # true显示行号
   theme: github
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
