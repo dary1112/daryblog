@@ -125,7 +125,7 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
 
 + `prototype` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造函数的原型
 
-+ `__proto__`也叫 `[[prototype]]`     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 隐式原型，实例对象上的属性，指向构造函数的prototype
++ `__proto__`也叫 `[[prototype]]`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 隐式原型，实例对象上的属性，指向构造函数的prototype
 
 + `instanceof` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运算符，判断一个对象是否是构造函数的实例
 
@@ -134,7 +134,7 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
   console.log(dary instanceof Object) // true
   ```
 
-+   hasOwnProperty   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  判断对象上是否存在某个属性，并且这个方法会过滤到原型上的属性
++   `hasOwnProperty`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  判断对象上是否存在某个属性，并且这个方法会过滤到原型上的属性
 
   ```javascript
   console.log(dary.hasOwnProperty('name')) // true
@@ -142,7 +142,7 @@ console.log(Person.prototype.__proto__ === Object.prototype) // true
   console.log(dary.hasOwnProperty('abc')) // false
   ```
 
-+   isPrototypeOf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查一个对象是否存在于另一个对象的原型链上
++   `isPrototypeOf`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查一个对象是否存在于另一个对象的原型链上
 
   ```javascript
   console.log(Person.prototype.isPrototypeOf(dary)) // true
