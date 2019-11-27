@@ -175,18 +175,20 @@ Version: 3
 
 1. 在App模块权限配置里把Maps打开
 
-![](/img/article/uniapp-amap-5.png)
+   ![](/img/article/uniapp-amap-5.png)
 
 2. 在App SDK里勾选高德地图，把刚刚在高德上创建的key复制进来就行了，ios的比较复杂，本来只介绍安卓，如果你只做安卓ios可以随便填一个，比如：`cd362f5dae1ab5b54edb0784f77fd748`
 
-![](/img/article/uniapp-amap-6.png)
+   ![](/img/article/uniapp-amap-6.png)
 
 3. 现在可以开始打包了，找到状态栏 发行 --> 原生App-云打包，弹出下面弹框：
 
    ![](/img/article/uniapp-amap-7.png)
 
-   **注意：**
+   
 
+   **注意：**
+   
    * Android包名这一项必须跟高德api创建key的时候的packageName一致！！！前文也提到过这件事。
    * 选择自有证书
    * 证书别名、证书私钥和证书文件就是第二步生成的证书的信息，文件路径就在你执行命令的路径，一般在`C:/Users/[你的用户名]`下，找到keystore文件就行
