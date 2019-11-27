@@ -1,5 +1,7 @@
 ---
 title: 前端常用的linux命令
+date: 2019-11-20 21:42
+
 categories:
 - 工具
 tags:
