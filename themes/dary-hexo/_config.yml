@@ -183,7 +183,7 @@ friends:
 ##########评论设置#############
 comment:
   on: true
-  type: gitment  # 评论系统：gitalk、disqus、gentie、gitment,注意：使用时，在下方对应位置进行配置
+  type: gitalk  # 评论系统：gitalk、disqus、gentie、gitment,注意：使用时，在下方对应位置进行配置
   comment_count: true  # 文章标题下方显示评论数
   preload_comment: false  # 预加载评论区
   ## false: 当点击评论条等区域时再加载评论模块
@@ -201,15 +201,13 @@ gentie:
   # 注册后，进入后台管理，获取代码：复制其中的productKey到product_key中。
   # 网易云跟帖暂时不支持查询评论数，所以启用时，把评论数关掉，上方comment_count: false。
 
-gitment:
-  on: true  # 启用gitment评论系统
-  owner: dary1112  # 你的github账号
-  githubID: dary1112
+gitalk:
+  githubID: dary1112  # 你的github账号
   repo: daryblog
   ClientID: c8aae70378f3f3b0a33c
   ClientSecret: 0de05750b9692c303476b799dd031b37aa3cfd30
-  adminUser: dary1112
   distractionFreeMode: true
+  adminUser: dary1112
   language: zh-CN
   perPage: 10
 # gitalk：利用github issue制作的第三方聊天插件
