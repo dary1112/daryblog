@@ -205,7 +205,7 @@ gitment:
   on: true  # 启用gitment评论系统
   owner: dary1112  # 你的github账号
   githubID: dary1112
-  repo: https://github.com/dary1112/daryblog.git
+  repo: dary1112.github.io/daryblog
   ClientID: c8aae70378f3f3b0a33c
   ClientSecret: 0de05750b9692c303476b799dd031b37aa3cfd30
   adminUser: dary1112
