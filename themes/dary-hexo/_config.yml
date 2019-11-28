@@ -206,7 +206,7 @@ gitalk:
   repo: daryblog
   ClientID: c8aae70378f3f3b0a33c
   ClientSecret: 0de05750b9692c303476b799dd031b37aa3cfd30
-  distractionFreeMode: true
+  distractionFreeMode: false
   adminUser: dary1112
   language: zh-CN
   perPage: 10
