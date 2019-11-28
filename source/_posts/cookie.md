@@ -8,7 +8,7 @@ categories:
 
 tags:
 
--  javascript
+-  JavaScript
 
 
 ---
