@@ -39,6 +39,8 @@ export default {
 }
 ```
 
+<br>
+
 现在地图上显示的位置是我们在data里面指定的经纬度，如果想要定位到设备位置我们需要调用`uni.getLocation` 方法，修改JavaScript代码码如下😁：
 
 ```javascript
@@ -82,11 +84,11 @@ export default {
 
  现在用真机运行就已经可以定位了，但是要在打包之后实现定位还得做进一步的配置🧐
 
-首先需要在 [高德地图开放平台]( https://lbs.amap.com/ 'https://lbs.amap.com/')上注册称为开发者，然后进入控制台，点击应用管理-->我的应用-->创建新应用，然后填入应用名称，选择行业。
+首先需要在 [高德地图开放平台]( https://lbs.amap.com/ 'https://lbs.amap.com/')上注册成为开发者，然后进入控制台，点击应用管理-->我的应用-->创建新应用，然后填入应用名称，选择行业。
 
 ![](/img/article/uniapp-amap-1.png)
 
-创建好了应用以后要继续创建key，这个key是我们打包安卓应用的时候必须要配置的一个东西，否则打包之后是不能定位的。按顺序填好key的名称，SHA1码和PackageName，这里的key名称是你自己填的一个标识，随便写写就行，SHA1码接下来我会说怎么获取😊，**PackageName必须跟你打包发布时的PackageName一致，否则也会导致不能正常使用。**
+创建好了应用以后要继续创建key，这个key是我们打包安卓应用的时候必须要配置的一个东西，否则打包之后是不能定位的。按顺序填好key的名称，SHA1码和PackageName，这里的key名称是你自己填的一个标识，随便写写就行，SHA1码接下来我会说怎么获取😊，**PackageName必须跟你打包发布时的Andoid包名一致，否则也会导致不能正常使用。**
 
 ![](/img/article/uniapp-amap-2.png)
 
@@ -94,7 +96,7 @@ export default {
 
 ### 一、安装JRE环境（如已有此环境可跳过）
 
-从Oracle官方下载jre安装包：[ https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html  ]( https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html   '下载JRE')
+从Oracle官方下载JRE安装包：[ https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html  ]( https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html   '下载JRE')
 
 ![](/img/article/uniapp-amap-3.png)
 
@@ -112,7 +114,7 @@ export default {
 keytool -genkey -alias testalias -keyalg RSA -keysize 2048 -validity 36500 -keystore test.keystore
 ```
 
-这里 `-alias testalias` 中的 `testalias` 是证书别名，你可以换成其他的，最后的`-keystore test.keystore`这里的`test.keystore`是证书文件的名称，你可以换成你自己的名字🤤，如`myapp.keystore`，回车后会提示：
+这里 `-alias testalias` 中的 `testalias` 是证书别名，你可以换成其他的，最后的`-keystore test.keystore`这里的`test.keystore`是证书文件的名称，你可以换成你自己的文件名🤤，如`myapp.keystore`，回车后会提示：
 
 ```powershell
 Enter keystore password:  输入证书文件密码，输入完成回车  
@@ -133,7 +135,7 @@ Is CN=XX, OU=XX, O=XX, L=XX, ST=XX, C=XX correct?
   [否]:  确认上面输入的内容是否正确，输入是，回车
 ```
 
- 以上命令运行完成后就会生成证书，证书文件在用户名文件夹下。
+ 以上命令运行完成后就会生成证书，证书文件默认在执行命令的目录也就是用户名文件夹下。
 
 然后再执行
 
@@ -179,7 +181,7 @@ Version: 3
 
    ![](/img/article/uniapp-amap-5.png)
 
-2. 在App SDK里勾选高德地图，把刚刚在高德上创建的key复制进来就行了，ios的比较复杂，本来只介绍安卓，如果你只做安卓ios可以随便填一个，比如：`cd362f5dae1ab5b54edb0784f77fd748`
+2. 在App SDK里勾选高德地图，把刚刚在高德上创建的key复制进来就行了，ios的比较复杂，本文只介绍安卓，如果你只做安卓ios可以随便填一个，比如：`cd362f5dae1ab5b54edb0784f77fd748`
 
    ![](/img/article/uniapp-amap-6.png)
 
