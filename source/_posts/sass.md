@@ -194,7 +194,7 @@ ul li>a {
 }
 ```
 
-嵌套的时候 **& 代表上一层**
+嵌套的时候 **& 代表上一层选择器**
 
 ```scss
 // scss
@@ -352,5 +352,13 @@ body{
 }
 ```
 
-sass还有一些不太常用的语法请参考官网文档： [https://www.sass.hk/docs/](https://www.sass.hk/docs/ 'sass中文文档')
+### 导入
+sass中如导入其他sass文件，最后编译为一个css文件，优于纯css的@import
 
+```scss
+@import "reset";
+```
+
+<br>
+
+**sass还有一些不太常用的语法请参考官网文档： [https://www.sass.hk/docs/](https://www.sass.hk/docs/ 'sass中文文档')**
