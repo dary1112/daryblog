@@ -274,8 +274,10 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
         root: 'dist',
         livereload: true,
         port: 8000,
+        // 中间件：函数返回一个数组，数组配置跨域代理
         middleware: function () {
           return [
+            // 将以/api为开头的请求代理到域 http://localhost:80
             proxy('/api', {
               target: 'http://localhost:80',
               changeOrigin: true
