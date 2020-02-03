@@ -54,7 +54,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 5. 规划目录结构，比如：src放源代码，dist就是根据src源代码使用gulp打包之后可以用来上线的代码，dist是不用动的，我们写代码在src里面写，但是最后运行的是dist目录
 
-   ![](/img/article/gulp项目目录解构.png)
+   ![gulp项目目录结构](/img/article/gulp项目目录结构.png)
 
 6. 在当前项目局部安装gulp， `npm i gulp -dev`，高版本npm会自动帮我们 --save 保存在package.json文件的依赖里，-dev的意思是安装成开发依赖，也就是说这个包只有开发环境需要，线上产品环境不需要。这样的话即使删除node_modules也可以直接运行 `npm i` 就可以根据package.json里面的所有依赖包信息把这些依赖包全局安装进来
 

@@ -42,7 +42,7 @@ tags:
 
 ## Git工作流程
 
-![](/img/article/git示意图.jpg 'git流程示意图')
+![git流程示意图](/img/article/git示意图.jpg 'git流程示意图')
 
 ### 概念介绍
 * workspace：本地工作空间
@@ -215,7 +215,7 @@ git冲突是指在我们的上传过程中，本地的版本和远程的版本�
 # 使用 fetch 获取远程最新信息并开辟一个临时分支
 $ git fetch origin master:tmp
 
-# 讲当前分支和临时分支的内容进行对比
+# 将当前分支和临时分支的内容进行对比
 $ git diff tmp
 
 # 再选择合并分支内容
