@@ -70,12 +70,6 @@ tags:
 
 2. 注册gitee的账号（或其他平台账号），修改个人空间地址，绑定邮箱。
 
-3. 全局配置用户名和邮箱
-
-   `git config --global user.name [个人空间地址用户名]` 
-
-   `git config --global user.email [账号绑定的邮箱]`
-
 4. 配置密钥对：生成公钥和私钥，用于上传代码时的安全验证
 
    在`git bash`里执行命令`ssh-keygen`  一路回车，就可以生成密钥对，默认密钥对是存放在`(/c/Users/[主机用户名]/.ssh/)` 。这个目录下有两个文件， .pub就是公钥，另外一个是私钥，这两个文件千万不要动！！！
@@ -106,7 +100,130 @@ tags:
 
 10. 代码推送到远程 `git push origin master`
 
+## 版本管理
+
+* 把已经放在暂存区的内容在拉回到工作区
+
+  ```bash
+  # 拉回暂存区的 index.txt 文件
+  git reset HEAD -- index.txt
+  
+  # 拉回暂存区的 ceshi 文件夹
+  git reset HEAD -- ceshi/
+  
+  # 拉回暂存区的 所有文件
+  git reset HEAD -- .
+  ```
+
+* 历史版本回退
+
+  ```bash
+  # 查看历史版本
+  git log
+  ```
+
+  ![git版本信息](/img/article/git版本信息.png 'git版本信息')
+
+  这里commit后面的字符串即为版本号，我们可以使用 `git reset --hard 版本编号` 进行历史回退
+
+  ```bash
+  # 回退到第一次提交的版本
+  git reset --hard ce0c17f7a703c6847552c7aaab6becea6f0197f2
+  
+  # 回退到第二次提交的版本
+  git reset --hard abb2c4f12566440e04bc166c3285f855a37a3bb2
+  ```
+
+## 分支管理
+
+git分支，就是我们自己把我们的整个文件夹分成一个一个独立的区域，比如我在开发 **登录** 功能的时候，可以放在 `login` 分支下进行开发；开发 **列表** 功能的时候，可以放在 `list` 分支下进行开发，大家互不干扰，每一个功能都是一个独立的功能分支，这样开发就会好很多。
+
+git在初始化的时候，会自动生成一个分支，叫做 `master`，是表示主要分支的意思，我们就可以自己基于`master`开辟出很多独立分支
+
+- 开辟一个分支使用 `git branch 分支名称` 指令
+
+  ```bash
+  # 开辟一个 login 分支
+  $ git branch login
+  ```
+
+- 查看一下当前分支情况
+
+  ```bash
+  # 查看当前分支情况
+  $ git branch
+  ```
+
+![查看分支情况](/img/article/查看分支情况.png '查看分支情况')
+
+已经可以看到，当前有两个分支了，一个是 `master`，一个是 `login`。前面有个 `*` 号，并且有高亮显示的，表示你当前所处的分支。
+
+我们对 **登录** 功能的开发要移动到 `login` 分支去完成，此时可以切换到其他分支，使用 `git checkout 分支名称`
+
+```bash
+# 切换到 login 分支
+$ git checkout login
+```
+
+然后我们在整个`login`分支上进行 **登录** 功能的开发。开发完毕以后，我们就在当前分支上进行提交，提交以后我们再把分支切换回`master`发现 `master` 上面还是最初始的状态，而 `login` 分支上有我们新写的 **登录** 功能的代码。我们按照分支把所有功能都开发完毕了以后，需要把所有代码都合并到 `master` 主分支上。
+
+`git` 的合并分支，只能是把别的分支的内容合并到自己的分支上
+
+- 使用的指令是 `git merge`
+
+  ```bash
+  # 切换到 master 分支
+  $ git checkout master
+  
+  # 把 login 的内容合并到自己的分支
+  $ git merge login
+  ```
+
+这个时候，我们刚才在 `login` 上开发的东西就都来到了 `master` 主分支上，**如果是有多个分支的话，那么所有的最后都合并到 `master` 分支上的时候，我们的主分支上就有完整网站的所有页面，各个分支上都是单独的页面和功能**。这个时候我们开辟的分支就没有什么用了，就可以删除分支了
+
+1. 先切换到别的分支
+
+2. 使用指令 `git branch -d 分支名称` 来删除
+
+   ```bash
+   # 先切换到别的分支
+   $ git checkout master
+   
+   # 删除 login 分支
+   $ git branch -d login
+   ```
+
+### 常用的分支命名
+
+在使用分支的时候我们的分支命名也要尽量规范一些，我们有一些分支名称大家都默认是有特殊意义的，比如我们之前的写的`login`分支就是不规范的分支名称。
+
+常见的分支名称
+
+1. master：主分支，永远只存储一个可以稳定运行的版本，不能再这个分支上直接开发
+2. develop（dev）： 主要开发分支，主要用于所用功能开发的代码合并，记录一个个的完整版本
+   - 包含测试版本和稳定版本
+   - 不要再这个分支上进行开发
+3. feature-xxx（feat-xxx）：功能开发分支，从`dev`创建的分支主要用作某一个功能的开发，以自己功能来命名就行，例如 `feat-login` / `feat-list`，开发完毕后合并到 `dev` 分支上
+4. feat-xxx-fix: 某一分支出现`bug`以后，在当前分支下开启一个`fix`分支，比如登录功能有bug，可以基于`feat-login`开辟一个新的分支`feat-login-fix`，解决完 `bug` 以后，合并到当前功能分支上，如果是功能分支已经合并之后发现 `bug` 可以直接在 `develop` 上开启分支，修复完成之后合并到 `dev` 分支上
+5. hotfix-xxx： 用于紧急`bug`修复，直接在 `master` 分支上开启，修复完成之后合并回 `master`
+
+## 冲突解决
+
+git冲突是指在我们的上传过程中，本地的版本和远程的版本不一致导致的，这个时候只要先使用 `git pull` 拉取回来，让本地和远程保持一致，然后再从新上传就好了，但是 `git pull` 相对不安全，因为会自动和本地内容合并，我们也可以选择使用 `git fetch`
+
+```bash
+# 使用 fetch 获取远程最新信息并开辟一个临时分支
+$ git fetch origin master:tmp
+
+# 讲当前分支和临时分支的内容进行对比
+$ git diff tmp
+
+# 再选择合并分支内容
+$ git merge tmp
+```
+
 ## 附录1：Git常见命令
+
 * `git init`&nbsp;&nbsp;&nbsp;&nbsp;初始化仓库
 * `git config`&nbsp;&nbsp;&nbsp;&nbsp;配置用户信息
 * `git remote`&nbsp;&nbsp;&nbsp;&nbsp;新增或者删除远程仓库的关联
@@ -117,7 +234,13 @@ tags:
 * `git log`&nbsp;&nbsp;&nbsp;&nbsp;查看日志（每一个commit在这里都能查看到，而且commit后面的随机字符串就是版本号），按字母q 退出log
 * `git reset --hard [要回退的版本号]`&nbsp;&nbsp;&nbsp;&nbsp;回退到之前的某一个版本
 * `git clone [线上仓库的https地址]`&nbsp;&nbsp;&nbsp;&nbsp;把线上仓库代码克隆到本地
-* `git pull`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码
+* `git pull`nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后直接合并
+* `git fetch`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后由用户决定是否合并
+* `git branch`&nbsp;&nbsp;&nbsp;&nbsp;查看分支
+* `git branch newBranch`&nbsp;&nbsp;&nbsp;&nbsp;基于当前分支创建`newBranch`分支
+* `git branch -d myBranch`&nbsp;&nbsp;&nbsp;&nbsp;删除`myBranch`分支
+* `git diff tmp`&nbsp;&nbsp;&nbsp;&nbsp;查看当前分支和`tmp`分支的区别
+* `git merge tmp`&nbsp;&nbsp;&nbsp;&nbsp;将`tmp`分支合并到当前分支
 
 ## 附录2：使用Git时候的一些注意事项
 * 一个本地仓库对应一个远程仓库
