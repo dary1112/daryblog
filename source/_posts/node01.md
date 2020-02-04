@@ -8,14 +8,24 @@ tags:
 - node
 ---
 
-- node官网：[https://nodejs.org/en/](https://nodejs.org/en/)
-- node中文网：[http://nodejs.cn/](http://nodejs.cn/)
-- 什么是 node
-  - Node.js® is a JavaScript runtime built on [Chrome's V8 JavaScript engine](https://v8.dev/).
+**本文适用于前端人员初学node**
+
+<br>
+
+## Node介绍
+
+> node官网：[https://nodejs.org/en/](https://nodejs.org/en/)
+
+> node中文网：[http://nodejs.cn/](http://nodejs.cn/)
+
+- 什么是 node：官网说法
+  - Node.js is a JavaScript runtime built on [Chrome's V8 JavaScript engine](https://v8.dev/).
   - Node.js 是一个基于 Chrome V8 引擎的 **JavaScript 运行环境。**
-- 这个是 node 官网的解释
+- 通俗的解释
   - 其实 node 就是用 javascript 语言写 **后端**
   - 也就是说，我们的 javascript 有了 node 以后，不光是一个前端语言，也是一个后端语言
+  - Node是一个后端环境，搭载的是javascript语言
+  - **Node是个环境，不是语言**
 - 前端 javascript
   - 三大核心
     - ECMAScript
