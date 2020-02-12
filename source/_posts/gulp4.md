@@ -58,7 +58,9 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 6. 在当前项目局部安装gulp， `npm i gulp -dev`，高版本npm会自动帮我们 --save 保存在package.json文件的依赖里，-dev的意思是安装成开发依赖，也就是说这个包只有开发环境需要，线上产品环境不需要。这样的话即使删除node_modules也可以直接运行 `npm i` 就可以根据package.json里面的所有依赖包信息把这些依赖包全局安装进来
 
-7. 管理路径，把所有的路径集中用paths对象来管理，包括源文件路径和目标路径
+7. 创建一个`gulpfile.js`文件，**注意：文件名一定要叫`gulpfile`**！！！然后在这个文件里制定各种任务。
+
+8. 管理路径，把所有的路径集中用paths对象来管理，包括源文件路径和目标路径
 
    \*\* 代表所有文件夹
 
@@ -89,7 +91,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
    }
    ```
 
-8. 制定压缩html的任务：执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
+9. 制定压缩html的任务：执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
 
    ```javascript
    const gulp = require('gulp')
@@ -115,7 +117,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
    }
    ```
 
-9. 制定js任务：先ES6转ES5，然后再压缩，最后在导出那里加上js任务
+10. 制定js任务：先ES6转ES5，然后再压缩，最后在导出那里加上js任务
 
    安装压缩js的包`npm i gulp-uglify -dev` 
 
@@ -140,7 +142,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
    }
    ```
 
-10. css任务压缩css：`npm i  gulp-clean-css -dev`
+11. css任务压缩css：`npm i  gulp-clean-css -dev`
 
    ```javascript
    const cleanCss = require('gulp-clean-css')
@@ -157,7 +159,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
    }
    ```
 
-11. 给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
+12. 给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
 
     ```javascript
     const cleanCss = require('gulp-clean-css')
@@ -165,9 +167,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     
     const css = () => {
       return gulp.src(path.css.src)
-           .pipe(autoPrefixer({
-            	browsers: ['last 2 versions']
-           }))
+           .pipe(autoPrefixer())
           .pipe(cleanCss())
           .pipe(gulp.dest(path.css.dest))
     }
@@ -178,9 +178,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     }
     ```
 
-    
-
-12. 如果用到sass来写样式，那么还要把css任务做进一步修改：
+13. 如果用到sass来写样式，那么还要把css任务做进一步修改：
 
     sass编译成成css：`npm i node-sass gulp-sass -dev` 
 
@@ -204,7 +202,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     }
     ```
 
-13. 开启服务器： `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
+14. 开启服务器： `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
 
     ```javascript
     const connect = require('gulp-connect')
@@ -218,7 +216,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     }
     ```
 
-14. 由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
+15. 由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
 
     ```javascript
     const del = require('del')
@@ -226,7 +224,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     const clean = () => del(['dist'])
     ```
 
-15. 还有一些图片或者引入的第三方的文件需要做一个移动处理
+16. 还有一些图片或者引入的第三方的文件需要做一个移动处理
 
     ```javascript
     // img任务：复制到dist里
@@ -236,7 +234,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     const libs = () => gulp.src(path.libs.src).pipe(gulp.dest(path.libs.dest))
     ```
 
-16. 监听html、js和css文件的变化，重启对应任务，在被监听的任务后面都要重启服务器 
+17. 监听html、js和css文件的变化，重启对应任务，在被监听的任务后面都要重启服务器 
 
     ```javascript
     // watch任务：监听一些文件的修改，一旦被修改了就自动重启对应的任务
@@ -256,14 +254,14 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     }
     ```
 
-17. 任务导出做一下修改，单个导出只能单个执行，所以我们可以把所有要执行的任务放在默认人任务里，就只需要在命令行里执行gulp即可执行所有任务：导出默认任务流，先同步执行clean，再异步执行其他任务
+18. 任务导出做一下修改，单个导出只能单个执行，所以我们可以把所有要执行的任务放在默认人任务里，就只需要在命令行里执行gulp即可执行所有任务：导出默认任务流，先同步执行clean，再异步执行其他任务
 
     ```javascript
     module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, libs, server, watch))
     
     ```
 
-18. 如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个中间件：`npm i http-proxy-middleware -dev`
+19. 如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个中间件：`npm i http-proxy-middleware -dev`
 
     ```javascript
     const connect = require('gulp-connect')
@@ -418,13 +416,15 @@ module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, 
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "del": "^5.1.0",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-connect": "^5.7.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "http-proxy-middleware": "^0.20.0"
   }
 }
 ```
