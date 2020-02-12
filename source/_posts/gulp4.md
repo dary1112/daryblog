@@ -166,10 +166,10 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     const autoPrefixer = require('gulp-autoprefixer')
     
     const css = () => {
-      return gulp.src(path.css.src)
-           .pipe(autoPrefixer({
-          	   overrideBrowserslist: ['last 2 versions']
-      	   }))
+        return gulp.src(path.js.src)
+            .pipe(autoprefixer({
+            	presets: ['@babel/env']
+        	}))
           .pipe(cleanCss())
           .pipe(gulp.dest(path.css.dest))
     }
@@ -194,13 +194,13 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     const sass = require('gulp-sass')
     
     const css = () => {
-      return gulp.src(path.css.src)
-          .pipe(sass())
-          .pipe(autoPrefixer({
-          	browsers: ['last 2 versions']
-      	  }))
-          .pipe(cleanCss())
-          .pipe(gulp.dest(path.css.dest))
+        return gulp.src(path.js.src)
+        	.pipe(sass())
+            .pipe(autoprefixer({
+            	presets: ['@babel/env']
+        	}))
+           .pipe(cleanCss())
+           .pipe(gulp.dest(path.css.dest))
     }
     ```
 
