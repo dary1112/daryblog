@@ -167,7 +167,9 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
     
     const css = () => {
       return gulp.src(path.css.src)
-           .pipe(autoPrefixer())
+           .pipe(autoPrefixer({
+          	   overrideBrowserslist: ['last 2 versions']
+      	   }))
           .pipe(cleanCss())
           .pipe(gulp.dest(path.css.dest))
     }
