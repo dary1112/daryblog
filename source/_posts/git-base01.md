@@ -232,16 +232,17 @@ $ git merge tmp
 
 * `git init`&nbsp;&nbsp;&nbsp;&nbsp;初始化仓库
 * `git config`&nbsp;&nbsp;&nbsp;&nbsp;配置用户信息
-* `git remote`&nbsp;&nbsp;&nbsp;&nbsp;新增或者删除远程仓库的关联
+* `git remote add origin [线上仓库地址]`&nbsp;&nbsp;&nbsp;&nbsp;新增远程仓库的关联
+* `git remote rm origin`&nbsp;&nbsp;&nbsp;&nbsp;删除远程仓库的关联
 * `git add`&nbsp;&nbsp;&nbsp;&nbsp;添加到暂存区
-* `git commit`&nbsp;&nbsp;&nbsp;&nbsp;代码提交（每一次commit都会有一个新的版本号）
-* `git push`&nbsp;&nbsp;&nbsp;&nbsp;推送到远程仓库
+* `git commit -m '[本次提交的备注信息]'`&nbsp;&nbsp;&nbsp;&nbsp;代码提交（每一次commit都会有一个新的版本号）
+* `git push origin [分支名]`&nbsp;&nbsp;&nbsp;&nbsp;推送到远程仓库
 * `git status`&nbsp;&nbsp;&nbsp;&nbsp;查看当前仓库的状态
 * `git log`&nbsp;&nbsp;&nbsp;&nbsp;查看日志（每一个commit在这里都能查看到，而且commit后面的随机字符串就是版本号），按字母q 退出log
 * `git reset --hard [要回退的版本号]`&nbsp;&nbsp;&nbsp;&nbsp;回退到之前的某一个版本
-* `git clone [线上仓库的https地址]`&nbsp;&nbsp;&nbsp;&nbsp;把线上仓库代码克隆到本地
-* `git pull`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后直接合并
-* `git fetch`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后由用户决定是否合并
+* `git clone [线上仓库地址]`&nbsp;&nbsp;&nbsp;&nbsp;把线上仓库代码克隆到本地
+* `git pull origin [分支名]`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取某分支最新的线上代码，拉取之后直接合并
+* `git fetch origin [分支名]`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取某分支最新的线上代码，拉取之后由用户决定是否合并
 * `git branch`&nbsp;&nbsp;&nbsp;&nbsp;查看分支
 * `git branch newBranch`&nbsp;&nbsp;&nbsp;&nbsp;基于当前分支创建`newBranch`分支
 * `git branch -d myBranch`&nbsp;&nbsp;&nbsp;&nbsp;删除`myBranch`分支
