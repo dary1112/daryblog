@@ -72,7 +72,7 @@ tags:
 
 3. 全局配置用户名和邮箱
 
-   `git config --global user.name【你的码云账号]`
+   `git config --global user.name[你的码云账号]`
 
    `git config --global user.email [你的码云验证邮箱]`
 
@@ -240,7 +240,7 @@ $ git merge tmp
 * `git log`&nbsp;&nbsp;&nbsp;&nbsp;查看日志（每一个commit在这里都能查看到，而且commit后面的随机字符串就是版本号），按字母q 退出log
 * `git reset --hard [要回退的版本号]`&nbsp;&nbsp;&nbsp;&nbsp;回退到之前的某一个版本
 * `git clone [线上仓库的https地址]`&nbsp;&nbsp;&nbsp;&nbsp;把线上仓库代码克隆到本地
-* `git pull`nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后直接合并
+* `git pull`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后直接合并
 * `git fetch`&nbsp;&nbsp;&nbsp;&nbsp;在已有的仓库基础上拉取最新的线上代码，拉取之后由用户决定是否合并
 * `git branch`&nbsp;&nbsp;&nbsp;&nbsp;查看分支
 * `git branch newBranch`&nbsp;&nbsp;&nbsp;&nbsp;基于当前分支创建`newBranch`分支
