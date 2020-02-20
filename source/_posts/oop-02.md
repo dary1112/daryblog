@@ -14,7 +14,7 @@ tags:
 ---
 
 **本文主要介绍JavaScript中的原型和原型链的基本概念和作用**
-
+@[toc]
 <br>
 
 通过前一篇文章[面向对象 — 从基本介绍到构造函数](/2019/11/06/oop-01/ "面向对象 — 从基本介绍到构造函数")的阅读，我们知道了JavaScript是一门面向对象的语言，但是，作者[Brendan Eich](https://baike.baidu.com/item/Brendan%20Eich/561441 "https://baike.baidu.com/item/Brendan Eich/561441")在设计Javascript的时候并没有打算引入 “类”的概念，因为Javascript在当时作为一门简易的脚本语言，并不需要那么正式。但是最后，Brendan还是为其设计了一套完整的面向对象的机制，包括继承（关于Javascript中继承的实现可移步我另一篇文章：[面向对象 — 继承]()）。

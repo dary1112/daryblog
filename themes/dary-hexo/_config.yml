@@ -1,7 +1,7 @@
 version: 1.0.1
 # 你的头像url
 avatar: /img/avatar.jpg
-favicon: /img/avatar.jpg
+favicon: /img/favicon.jpg
 
 #如果博客放置位置不是根目录，则可以通过配置此路径解决静态文件路径错误问题 
 # 比如访问地址为 yelog.org/blog 那就需要配置为 blog_path: /blog 才能正常访问
@@ -59,7 +59,7 @@ menu:
 # 文末声明
 article_txt: 转载请注明来源，文末有原始链接。欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 dary1112@foxmail.com
 
-bottom_text: ©2017-2020 Dary
+bottom_text: ©2017-2021 Dary
 # 自定义页面最下方的站点版权信息
 # 如果不填，则自定义为 ©2017 author (这个author为hexo根目录_config.yml中配置的)
 
@@ -179,6 +179,7 @@ mathjax:
 friends:
   叶落阁: http://yelog.org/
   小旭旭的掘金: https://juejin.im/user/5c3293c8e51d4551e0646230/posts/
+  千锋HTML5学院 — 知乎: https://www.zhihu.com/org/qian-feng-html5xue-yuan
 
 ##########评论设置#############
 comment:
