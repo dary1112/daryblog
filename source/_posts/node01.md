@@ -719,3 +719,13 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
   # 表示切换到 taobao 镜像源地址
   nrm use taobao
   ```
+
+## 使用cnpm
+
+有些小伙伴nrm安装比较困难，我们可以直接使用cnpm
+
+```bash
+npm install cnpm -g --registry=https://registry.npm.taobao.org
+```
+
+然后所有的npm命令都可以使用cnpm来代替啦
