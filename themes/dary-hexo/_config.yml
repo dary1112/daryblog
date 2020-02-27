@@ -12,7 +12,7 @@ link:
   theme: color # 链接样式，color: 彩色图标  white: 黑白图标
   items:
     github: https://github.com/dary1112
-    facebook: https://www.facebook.com/faker.tops
+    wechat: http://www.xiongdalin.com/img/article/wechat.png
     email: dary1112@foxmail.com
     qq: 3424795193
 
@@ -177,6 +177,7 @@ mathjax:
 
 # 友情链接
 friends:
+  微信公众号 — 熊大林的博客: http://www.xiongdalin.com/img/article/wechat.png
   叶落阁: http://yelog.org/
   小旭旭的掘金: https://juejin.im/user/5c3293c8e51d4551e0646230/posts/
   千锋HTML5学院 — 知乎: https://www.zhihu.com/org/qian-feng-html5xue-yuan
