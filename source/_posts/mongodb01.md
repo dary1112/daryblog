@@ -3,7 +3,6 @@ title: mongoDB的安装和使用mongoose
 date: 2020-03-03 00:07
 
 categories:
-- 大前端
 - 后端
 tags:
 - node
