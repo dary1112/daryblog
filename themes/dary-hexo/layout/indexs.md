@@ -7,7 +7,19 @@
 
 **本站致力于开发类文章分享，主要是前端入门教程，希望可以帮助到大家。**
 
+
+
+<ul>
+        <li style="list-style: none;">
+          <p style="text-align: center;">欢迎关注公众号 — 熊大林的博客</p>
+          <figure class="article-gallery-img" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="http://www.xiongdalin.com/img/article/wechat.png" title=""><img width="60%" src="/img/article/wechat.png" title="公众号熊大林的博客"><div class="img_alt"><span></span></div></a></figure>
+        </li>
+      </ul>
+
+
+
 ## 功能说明：
+
 - 搜索支持文章标题、分类、标签(#标签)
 
 - pad/手机等移动端适配
