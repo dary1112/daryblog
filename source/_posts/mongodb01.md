@@ -173,10 +173,10 @@ tags:
    * 更新：update、updateOne（更新一条）和updateMany（更新多条），三个方法用法一致，结果不同，以其中一个为例
 
      ```javascript
-     // 找到第一个满足条件得并更新：把年龄小于20的密码改为666
+     // 找到第一个满足条件的并更新：把年龄小于20的密码改为666
      User.update({ age: { $lt: 20 } }, { password: '666' }, (err, obj) => {
        if (err) return console.error(err)
-       // obj里又三个属性
+       // obj里有三个属性
        //  n: 条件匹配到的数据条数
        //  ok: 1代表语句执行成功
        //  nModified: 更新的数量
@@ -187,10 +187,10 @@ tags:
    * 删除：deleteOne和deleteMany，删除一条和删除多条
 
      ```javascript
-     // 讲年龄为40的数据删除掉
+     // 将年龄为40的数据删除掉
      User.deleteOne({ age: 40 }, (err, obj) => {
        if (err) return console.error(err)
-       // obj里又三个属性
+       // obj里有三个属性
        //  n:条件匹配到的数据条数
        //  ok: 1代表语句执行成功
        //  deletedCount： 被删除的数量

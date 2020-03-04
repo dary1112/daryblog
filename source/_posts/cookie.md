@@ -97,7 +97,7 @@ document.cookie = 'username=dary' // 存一条username为dary的cookie
 但是如果当我们要存一条中文的cookie，比如：`username=张三`，在部分低版本浏览器就会遇到一些位置错误，这时就可以使用 `encodeURIComponent` 编码对中文进行编码：
 
 ```javascript
-document.cookie = `username=encodeURIComponent('熊大林')`
+document.cookie = `username=${encodeURIComponent('熊大林')}`
 ```
 
 ![](/img/article/cookieconsole截图2.png)
