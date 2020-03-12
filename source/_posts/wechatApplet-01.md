@@ -24,7 +24,7 @@ tags:
 
 首先介绍一下代码文件，demo里面你能明显看到五个文件夹和两个个文件，app.js是整个项目的入口文件，你的全局方法和属性都可以放在这里面，在任何需要的网页里直接调用即可。app.json存储的是所有页面的配置信息，也就是说小程序里所有的页面都要在这里面进行配置，配置的方法看完demo你就懂了。app.wxss是一个css文件，代码的编写跟css3完全一样，他是全局样式，所有页面无需引用自动作为第一个样式表加载，其他两个文件是项目相关的一些配置信息，初学一般不用动他。再说说文件夹，utils一般是定义一些工具方法的，所有页面都要放在pages文件夹下，pages/index.wxml是小程序的首页，至于wxml文件将在下面进行详细说明。
 
-![微信小程序官方demo](/img/article/wechat-applet-01.png 微信小程序官方demo)
+![微信小程序官方demo](/img/article/wechat-applet-01.png '微信小程序官方demo')
 
 下面我们解释一下在小程序里每个文件存在的意义。首先wxml相当于网页中的html，不过他是xml。xml和html相信不需要我多说，小程序所采用的xml有更多的限制，标签更少更简洁。每一个页面会对应与其相同名字的js、json和wxss文件。js文件里是一些属性和方法，json文件里是当前页面的一些配置信息，需要的话可以加上，不写空着也是没有问题的。wxss当然就是样式表了，这些文件都不需要手动引入，而是在编译的时候就自然加载进去了。
 
@@ -32,11 +32,11 @@ tags:
 
 现在我们来创建一个页面，在pages上点击新建目录test，再在test上新建index.wxml完成以后回到app.json，在pages数组里加上"pages/test/index"并保存，即可看到test下已完成配置，如下图所示：
 
-![新建test页面](/img/article/wechat-applet-02.png 新建test页面)
+![新建test页面](/img/article/wechat-applet-02.png '新建test页面')
 
 这样我们就可以开始写业务了。打开index.wxml写页面，如果网页上的数据是由index.js提供，如下图：
 
-![index.js书写](/img/article/wechat-applet-03.png index.js书写)
+![index.js书写](/img/article/wechat-applet-03.png 'ndex.js书写')
 
 那么我们需要把这些数据并展示在页面上，无可厚非需要循环，在说循环之前我们先来说说数据绑定。数据绑定使用 Mustache 语法（双大括号）将变量包起来，可以作用于index.wxml中
 
@@ -69,21 +69,21 @@ Page({
 
 代码如下图
 
-![列表渲染](/img/article/wechat-applet-04.png 列表渲染)
+![列表渲染](/img/article/wechat-applet-04.png '列表渲染')
 
 当然，如果需要过滤数据也可以用到条件渲染wx:if，语法为wx:if="{{condition}}"，用法很简单，官方文档讲解也非常清楚，这里就不举例说明了。
 
 下面再来说一说小程序对接后台，发送请求这一部分内容，也就是`wx:request`的用法。首先需要在开发者工具配置信息中输入request合法域名，也就是请求服务器的地址，域名必须是满足https协议，如果是自己开发使用，也可以在菜单栏的设置里找到项目设置，勾选`不校验合法域名`这一项。使用起来跟jquery的ajax极为相似，话不多说，直接上代码：
 
-![request请求](/img/article/wechat-applet-05.png request请求)
+![request请求](/img/article/wechat-applet-05.png 'request请求')
 
 这是页面初始化是的request，直接请求数据，即为GET请求（因为wx:request默认极为GET请求），是不是跟ajax极为相似？
 
 下面是POST请求
 
-![post请求](/img/article/wechat-applet-06.png post请求)
+![post请求](/img/article/wechat-applet-06.png 'post请求')
 
 需要注意的是post请求与GET请求的请求头不一样，上图我做了框选标注，如果混用会导致请求失败，需要留心一下。
 
-关于wxss，他与css3没有任何区别，如果你需要在局部几个页面引入同一张样式表，可以在本页面同名的wxss文件中使用 @import "common.wxss"; 语句进行引入，可以出现在任何位置。
+关于wxss，他与css3没有任何区别，如果你需要在局部几个页面引入同一张样式表，可以在本页面同名的wxss文件中使用 `@import  "common.wxss";` 语句进行引入，可以出现在任何位置。
 以上就是本篇文章的所有内容了，学会了这些，已经可以编写一个属于你自己的小型的微信小程序了，祝大家成功！
