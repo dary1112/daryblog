@@ -176,7 +176,7 @@ arr.reduce(function (acc, cur, index, array) {
 
 ## from（ES6）
 
-这是Array对象本身的方法，所以调用方式是`Array.from()`，它可以将一个可迭代对象，例如NodeList、classList等转换成一个数字
+这是Array对象本身的方法，所以调用方式是`Array.from()`，它可以将一个可迭代对象，例如NodeList、classList等转换成一个数组
 
 ```javascript
 Array.from(document.querySelesctorAll('.delete'))
