@@ -59,7 +59,8 @@ menu:
 # 文末声明
 article_txt: 转载请注明来源，文末有原始链接。欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 dary1112@foxmail.com
 
-bottom_text: ©2017-2021 Dary
+bottom_text: 蜀ICP备17026041号
+bottom_href: http://www.beian.miit.gov.cn
 # 自定义页面最下方的站点版权信息
 # 如果不填，则自定义为 ©2017 author (这个author为hexo根目录_config.yml中配置的)
 
@@ -178,6 +179,8 @@ mathjax:
 # 友情链接
 friends:
   微信公众号 — 熊大林的博客: http://www.xiongdalin.com/img/article/wechat.png
+  hexo: https://hexo.io/
+  3-hexo: https://github.com/yelog/hexo-theme-3-hexo/
   叶落阁: http://yelog.org/
   小旭旭的掘金: https://juejin.im/user/5c3293c8e51d4551e0646230/posts/
   千锋HTML5学院 — 知乎: https://www.zhihu.com/org/qian-feng-html5xue-yuan
