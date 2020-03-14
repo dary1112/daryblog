@@ -9,7 +9,11 @@ tags:
 ---
 
 **本文主要介绍Git，实现基本的代码托管，适合初次接触Git的开发人员，高级用法请查阅后续文章。**
+
+<br>
+
 @[toc]
+
 <br>
 
 > [Git](https://git-scm.com 'https://git-scm.com') is a free and open source distributed version control system 
