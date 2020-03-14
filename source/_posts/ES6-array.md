@@ -143,6 +143,33 @@ console.log(array1.reduce(function (acc, curr) {
 }, 5)) // 15
 ```
 
+**reduce很多时候都会用到初始值，尤其在操作json数组的时候极为有用，比如计算商品总价**
+
+```javascript
+var list = [
+    { id: 1, title: '钢笔', num: 10, price: 8},
+    { id: 2, title: '墨水', num: 2, price: 5},
+    { id: 3, title: '圆规', num: 1, price: 7},
+    { id: 4, title: '尺子', num: 15, price: 2},
+]
+// 这里必须要写初始值0，否则第一次归并的时候money参数是数组的第一个元素，是个对象
+// 但是第二次开始由于第一次return了数字money也就是数字了，这样归并是不合理的
+var allMoney = list.reduce(function (money, shop) {
+    return money + shop.num * shop.price
+}, 0)
+console.log(allMoney) // 127
+```
+
+*reduce的回调里还有另外两个可选参数index和array*
+
+```javascript
+var arr = [1, 2, 3, 4]
+arr.reduce(function (acc, cur, index, array) {
+    // index指cur的索引
+    // array就是源数组arr
+})
+```
+
 
 
 ## from
