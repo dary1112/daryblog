@@ -207,7 +207,40 @@ Array.from(document.querySelesctor('.delete').classList).includes('myClass')
 
 
 
-## *entries*
+## *keys（ES6）*
+
+实验性的API，返回一个新的**Array Iterator**对象，该迭代器会包含所有数组元素的键
+
+```javascript
+const array1 = ['a', 'b', 'c'];
+
+const iterator1 = array1.keys();
+
+console.log(iterator1.next().value);  // 0
+console.log(iterator1.next().value);  // 1
+console.log(iterator1.next().value);  // 2
+console.log(iterator1.next().value);  // undefined
+```
+
+
+
+## *values（ES6）*
+
+实验性的API，返回一个新的**Array Iterator**对象，该迭代器含数组每个索引的值
+
+```javascript
+const array1 = ['a', 'b', 'c'];
+
+const iterator1 = array1.values();
+
+console.log(iterator1.next().value);  // a
+console.log(iterator1.next().value);  // b
+console.log(iterator1.next().value);  // c
+```
+
+
+
+## *entries（ES6）*
 
 实验性的API，返回一个新的**Array Iterator**对象，该对象包含数组中每个索引的键/值对
 
@@ -218,6 +251,7 @@ const iterator1 = array1.entries();
 
 console.log(iterator1.next().value);  // [0, "a"]
 console.log(iterator1.next().value);  // [1, "b"]
+console.log(iterator1.next().value);  // [2, "c"]
 ```
 
 
