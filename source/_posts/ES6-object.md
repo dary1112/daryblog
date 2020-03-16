@@ -34,6 +34,32 @@ console.log(target)  //  { a: 1, b: 4, c: 5 }
 console.log(returnedTarget)  // { a: 1, b: 4, c: 5 }
 ```
 
+在我们的todolist案例中，添加待办事项的地方可以稍作改造
+
+```javascript
+var todo = {
+    title: title,
+    time: time
+}
+todo.id = Date.now()
+todo.hasFinish = false
+```
+
+可以改为：
+
+```javascript
+var todo = {
+    title: title,
+    time: time
+}
+todo = Object.assign({}, todo, {
+    id: Date.now(),
+    hasFinish: false
+})
+```
+
+>  当然，在开发中这样的改造其实意义并不大，只不过为了让朋友们更好理解这个方法。
+
 
 
 ## is（ES6）
