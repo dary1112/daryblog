@@ -22,9 +22,7 @@ tags:
 
 正则表达式并不是只有前端才有，很多后端语言也都支持正则，正则本身是独立于语言之外的。
 
-JavaScript诞生的最初目的就是：**验证！**
-
-![Netscape Navigator](/img/article/Netscape Navigator.jpg 'Netscape Navigator')
+JavaScript诞生的最初目的就是：**验证！**![Netscape Navigator](/img/article/Netscape-Navigator.jpg 'Netscape Navigator')
 
 当初的浏览器是用来浏览一些新闻之类的文字信息，那么对于字符串的操作就比较重要了，比如验证表单，模糊搜索等。
 
@@ -109,7 +107,9 @@ console.log(re.test(str)) // true
 
 
 
-**| : 或，跟js中的（||）一样^：排除（除了） 类似js中的（！）**
+**| : 或，跟js中的（||）一样**
+
+**^：排除（除了） 类似js中的（！）**
 
 **^ (不在中括号里)匹配字符串开头**
 
@@ -167,7 +167,7 @@ console.log(re.test(str)) // true
 
 ## 修饰符
 
-匹配大小写不一样的字母怎么办？我们可以使用**修饰符 i **
+匹配大小写不一样的字母怎么办？我们可以使用 **修饰符 i**
 
 正则对象中有第二个参数，可以传入对应的值，i 代表让正则不区分大小写；
 
