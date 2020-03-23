@@ -1,6 +1,6 @@
 ---
 title: 锋利的ES6 — Proxy
-date: 2020-03-23 11:49
+date: 2020-03-23 12:11
 
 categories:
 - 大前端
@@ -33,11 +33,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
     [[GetPrototypeOf]]()
    ```
 
+   <br>
+
 2. 设置一个对象的原型时调用，在执行obj.prototype=otherObj或则Object.SetPrototypeOf(v)的时候调用
 
    ```js
    [[SetPrototypeOf]](V)  
    ```
+
+   <br>
 
 3. 获取对象的可扩展性时调用，执行Object.isExtensible(object)时被调用
 
@@ -45,11 +49,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
    [[IsExtensible]]()  
    ```
 
+   <br>
+
 4. 获取自有属性时调用
 
    ```js
    [[GetOwnProperty]](P)  
    ```
+
+   <br>
 
 5. 扩展一个不可扩展的对象时调用
 
@@ -57,11 +65,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
    [[PreventExtensions]]()
    ```
 
+   <br>
+
 6. 定义自有属性时调用
 
    ```js
    [[DefineOwnProperty]](P, Desc)
    ```
+
+   <br>
 
 7. 检测对象是否存在某个属性时调用，如key in obj
 
@@ -69,11 +81,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
    [[HasProperty]](P)
    ```
 
+   <br>
+
 8. 获取属性时调用，如obj.key，obj[key]
 
    ```js
    [[Get]](P, Receiver)
    ```
+
+   <br>
 
 9. 为对象的属性赋值时调用，如obj.key=value或obj[key]=value
 
@@ -81,11 +97,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
    [[Set]] ( P, V, Receiver)
    ```
 
+   <br>
+
 10. 删除某个属性时调用
 
     ```js
     [[Delete]](P)
     ```
+
+    <br>
 
 11. 列举对象的可枚举属性时调用，如for (var key in obj)
 
@@ -93,11 +113,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
     [[Enumerate]]()
     ```
 
+    <br>
+
 12. 列举对象的自有属性时调用
 
     ```js
     [[OwnPropertyKeys]]()
     ```
+
+    <br>
 
 13. 调用一个函数时被调用，functionObj()或者x.method()
 
@@ -105,11 +129,15 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
     functionObj.[[Call]](thisValue, arguments)
     ```
 
+    <br>
+
 14. 使用new操作的时候调用，如new Date()
 
     ```js
     constructorObj.[[Construct]](arguments, newTarget)  
     ```
+
+    <br>
 
 
 
