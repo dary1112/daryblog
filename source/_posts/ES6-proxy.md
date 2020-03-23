@@ -33,109 +33,83 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
     [[GetPrototypeOf]]()
    ```
 
-
-
 2. 设置一个对象的原型时调用，在执行obj.prototype=otherObj或则Object.SetPrototypeOf(v)的时候调用
 
    ```js
    [[SetPrototypeOf]](V)  
    ```
 
+3. 获取对象的可扩展性时调用，执行Object.isExtensible(object)时被调用
 
+   ```js
+   [[IsExtensible]]()  
+   ```
 
- ```js
-  [[IsExtensible]]()
- ```
+4. 获取自有属性时调用
 
-  > 获取对象的可扩展性时调用，执行Object.isExtensible(object)时被调用
+   ```js
+   [[GetOwnProperty]](P)  
+   ```
 
-  
+5. 扩展一个不可扩展的对象时调用
 
- ```js
-  [[GetOwnProperty]](P)
- ```
+   ```js
+   [[PreventExtensions]]()
+   ```
 
-  > 获取自有属性时调用
+6. 定义自有属性时调用
 
-  
+   ```js
+   [[DefineOwnProperty]](P, Desc)
+   ```
 
- ```javascript
-  [[PreventExtensions]]()
- ```
+7. 检测对象是否存在某个属性时调用，如key in obj
 
-  > 扩展一个不可扩展的对象时调用
+   ```js
+   [[HasProperty]](P)
+   ```
 
-  
+8. 获取属性时调用，如obj.key，obj[key]
 
- ```javascript
-  [[DefineOwnProperty]](P, Desc)
- ```
+   ```js
+   [[Get]](P, Receiver)
+   ```
 
-  > 定义自有属性时调用
+9. 为对象的属性赋值时调用，如obj.key=value或obj[key]=value
 
-  
+   ```js
+   [[Set]] ( P, V, Receiver)
+   ```
 
- ```js
-  [[HasProperty]](P)
- ```
+10. 删除某个属性时调用
 
-  > 检测对象是否存在某个属性时调用，如key in obj
+    ```js
+    [[Delete]](P)
+    ```
 
-  
+11. 列举对象的可枚举属性时调用，如for (var key in obj)
 
- ```js
-  [[Get]](P, Receiver)
- ```
+    ```js
+    [[Enumerate]]()
+    ```
 
-  > 获取属性时调用，如obj.key，obj[key]
+12. 列举对象的自有属性时调用
 
-  
+    ```js
+    [[OwnPropertyKeys]]()
+    ```
 
- ```js
-  [[Set]] ( P, V, Receiver)
- ```
+13. 调用一个函数时被调用，functionObj()或者x.method()
 
-  > 为对象的属性赋值时调用，如obj.key=value或obj[key]=value
+    ```js
+    functionObj.[[Call]](thisValue, arguments)
+    ```
 
-  
+14. 使用new操作的时候调用，如new Date()
 
- ```js
-  [[Delete]](P)
- ```
-
-  > 删除某个属性时调用
-
-  
-
- ```js
-  [[Enumerate]]()
- ```
-
-  > 列举对象的可枚举属性时调用，如for (var key in obj)
-
-  
-
- ```js
-  [[OwnPropertyKeys]]( )
- ```
-
-  > 列举对象的自有属性时调用
-
-  
-
- ```js
-  functionObj.[[Call]](thisValue, arguments)
- ```
-
-  > 调用一个函数时被调用，functionObj()或者x.method()
-
-  
-
- ```js
-  constructorObj.[[Construct]](arguments, newTarget)
- ```
-
-  > 使用new操作的时候调用，如new Date()
+    ```js
+    constructorObj.[[Construct]](arguments, newTarget)  
+    ```
 
 
 
