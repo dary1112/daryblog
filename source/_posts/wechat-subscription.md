@@ -10,4 +10,4 @@ top: 1
 
 *微信搜一搜或者扫描二维码关注* 😍😍😍😍😍😍
 
-![](/img/article/wechat.png)
+![欢迎关注公众号 — 熊大林的博客](/img/article/wechat.png '欢迎关注公众号 — 熊大林的博客')
