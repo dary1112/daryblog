@@ -17,6 +17,8 @@ tags:
 
 <br>
 
+## Proxy由来
+
 Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 
 Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
@@ -29,78 +31,104 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
 
   > 获取对象的原型时调用，在执行obj[__proto__]或Object.getPrototypeOf(obj)时调用
 
+  
+  
 - ```js
   [[SetPrototypeOf]](V)
   ```
 
   > 设置一个对象的原型时调用，在执行obj.prototype=otherObj或则Object.SetPrototypeOf(v)的时候调用
 
+  
+  
 - ```js
   [[IsExtensible]]()
   ```
 
   > 获取对象的可扩展性时调用，执行Object.isExtensible(object)时被调用
 
+  
+  
 - ```js
   [[GetOwnProperty]](P)
   ```
 
   > 获取自有属性时调用
 
+  
+  
 - ```javascript
   [[PreventExtensions]]()
   ```
 
   > 扩展一个不可扩展的对象时调用
 
+  
+  
 - ```javascript
   [[DefineOwnProperty]](P, Desc)
   ```
 
   > 定义自有属性时调用
 
+  
+  
 - ```js
   [[HasProperty]](P)
   ```
 
   > 检测对象是否存在某个属性时调用，如key in obj
 
+  
+  
 - ```js
   [[Get]](P, Receiver)
   ```
 
   > 获取属性时调用，如obj.key，obj[key]
 
+  
+  
 - ```js
   [[Set]] ( P, V, Receiver)
   ```
 
   > 为对象的属性赋值时调用，如obj.key=value或obj[key]=value
 
+  
+  
 - ```js
   [[Delete]](P)
   ```
 
   > 删除某个属性时调用
 
+  
+  
 - ```js
   [[Enumerate]]()
   ```
 
   > 列举对象的可枚举属性时调用，如for (var key in obj)
 
+  
+  
 - ```js
   [[OwnPropertyKeys]]( )
   ```
 
   > 列举对象的自有属性时调用
 
+  
+  
 - ```js
   functionObj.[[Call]](thisValue, arguments)
   ```
 
   > 调用一个函数时被调用，functionObj()或者x.method()
 
+  
+  
 - ```js
   constructorObj.[[Construct]](arguments, newTarget)
   ```
@@ -110,6 +138,10 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
 
 
 在整个 ES6 标准中，只要有可能，任何语法或对象相关的内建函数都是基于这14种内部方法构建的 。但是我们不必记住这些对象的内建属性，我们更应关注是handler与之相对应的方法。
+
+
+
+## Proxy介绍
 
 那么，什么是“代理”呢？我们可以这样说，代理Proxy是一个构造函数，它可以接受两个参数：目标对象（target） 与句柄对象（handler） ，返回一个代理对象Proxy，主要用于从外部控制对对象内部的访问。
 
@@ -137,6 +169,10 @@ new Proxy(person, {
 ```
 
 其实细心的朋友可以发现，这样的用法跟`Object.defineProperty`很相似，因此想要实现响应式渲染用`Proxy`也会非常方便。
+
+
+
+## Proxy用途
 
 **vue3中的响应式原理就是使用Proxy。**
 
@@ -200,7 +236,7 @@ console.log('ver' in api); // true
 
 
 
-`Proxy`的用途还很多，比如
+**`Proxy`的用途还很多，比如**
 
 * `handler.deleteProperty()` 方法用于拦截对对象属性的 [`delete`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete) 操作
 
