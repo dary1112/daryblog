@@ -317,7 +317,7 @@ Vue 3 的`<Suspense>`更加轻量：
 
 ### 1. `Docs & Migration Guides`
 
-![Docs & Migration Guides](/img/article/Docs&MigrationGuides.jpg)
+![Docs & Migration Guides](/img/article/vue3-Docs&MigrationGuides.jpg)
 
 - 新的文档编写交由`@NataliaTepluhina, @sdras, @bencodezen & @phanan` 负责
 - `@sdras` 正在做自动升级迁移工具
