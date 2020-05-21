@@ -1,5 +1,5 @@
 ---
-title: 锋利的ES6 — async await
+title: 锋利的ES6 — Generator
 date: 2020-05-21 17:55
 
 categories:
