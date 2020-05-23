@@ -100,7 +100,7 @@ export default {
 
 ### 一、安装JRE环境（如已有此环境可跳过）
 
-从Oracle官方下载JRE安装包：[ https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html  ]( https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html   '下载JRE')
+从Oracle官方下载JRE安装包：[ https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html  ]( https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html   '下载JRE')，选择操作系统对应的版本下载，如果没有Oracle账号需要注册一个。
 
 ![](/img/article/uniapp-amap-3.png)
 
@@ -193,10 +193,9 @@ Version: 3
 
    ![](/img/article/uniapp-amap-7.png)
 
-   
 
    **注意：**
-   
+
    * Android包名这一项必须跟高德api创建key的时候的packageName一致！！！前文也提到过这件事。
    * 选择自有证书
    * 证书别名、证书私钥和证书文件就是第二步生成的证书的信息，文件路径就在你执行命令的路径，一般在`C:/Users/[你的用户名]`下，找到keystore文件就行
