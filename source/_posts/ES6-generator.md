@@ -129,7 +129,9 @@ result.value.then(function(data){
 })
 ```
 
-看起来有些鸡肋，所以后面ES2017 标准引入了 async 函数，使得异步操作变得更加方便。async 其实就是`Generator`的语法糖。
+看起来有些鸡肋，所以后面ES2017 标准引入了 async 函数，使得异步操作变得更加方便。async 其实就是`Generator`的语法糖。敬请移步[锋利的ES6 — Async Await](http://www.xiongdalin.com/2020/05/28/ES6-async-await/)。
+
+
 
 
 
