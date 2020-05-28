@@ -104,7 +104,7 @@ export default {
 
 ![](/img/article/uniapp-amap-3.png)
 
-全部下一步安装即可，记住安装目录，需要配置环境变量，比如：我的安装目录是`C:\Program Files\Android\Android Studio\jre\bin`
+全部下一步安装即可，记住安装目录，需要配置环境变量，比如：我的安装目录是`C:\Program Files\Java\jre1.8.0_251\bin`
 
 右键我的电脑，进入属性-->高级系统设置-->高级-->环境变量-->找到Path-->新建，把这个路径粘贴进去🥴
 
