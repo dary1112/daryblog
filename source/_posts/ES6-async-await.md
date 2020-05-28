@@ -1,6 +1,6 @@
 ---
 title: 锋利的ES6 — async await
-date: 2020-05-28 18:55
+date: 2020-05-28 18:51
 
 categories:
 - 大前端
