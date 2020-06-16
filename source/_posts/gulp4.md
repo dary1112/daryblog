@@ -96,6 +96,8 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
        }
    }
    ```
+
+
 ### 二、html任务
 
 执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
