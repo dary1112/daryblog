@@ -48,6 +48,8 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 ## gulp使用
 
+### 准备工作
+
 1. 安装node环境：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')，下载LTS版本的即可
 
 2. 在任意位置打开命令行工具，使用npm全局安装gulp命令行工具 `npm i gulp -g`，安装完成以后执行`gulp -v` 只要看到版本号就说明安装成功
@@ -94,207 +96,223 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
        }
    }
    ```
+### 制定任务
 
-9. 制定压缩html的任务：执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
+#### 一、html任务
 
-   ```javascript
-   const gulp = require('gulp')
-   const htmlmin = require('gulp-htmlmin')
-   
-   const html = () => {
-       // 需要把任务代码return
-       return gulp.src(path.html.src)
-           .pipe(htmlmin({
-           	removeComments: true,//清除HTML注释
-           	collapseWhitespace: true,//压缩HTML
-           	collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input checked />
-         		removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-         		removeScriptTypeAttributes: false,//删除<script>的type="text/javascript"
-         		removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
-         		minifyJS: true,//压缩页面JS
-         		minifyCSS: true//压缩页面CSS 
-       	}))
-       	.pipe(gulp.dest(path.html.dest))
-   }
-   module.exports = {
-     html
-   }
-   ```
+执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
 
-10. 制定js任务：先ES6转ES5，然后再压缩，最后在导出那里加上js任务
+```javascript
+const gulp = require('gulp')
+const htmlmin = require('gulp-htmlmin')
 
-   安装压缩js的包`npm i gulp-uglify -dev` 
+const html = () => {
+    // 需要把任务代码return
+    return gulp.src(path.html.src)
+        .pipe(htmlmin({
+        	removeComments: true,//清除HTML注释
+        	collapseWhitespace: true,//压缩HTML
+        	collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input checked />
+      		removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+      		removeScriptTypeAttributes: false,//删除<script>的type="text/javascript"
+      		removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
+      		minifyJS: true,//压缩页面JS
+      		minifyCSS: true//压缩页面CSS 
+    	}))
+    	.pipe(gulp.dest(path.html.dest))
+}
+module.exports = {
+  html
+}
+```
 
-   安装ES6转ES5的包`npm i gulp-babel @babel/core @babel/preset-env -dev`
+#### 二、js任务
 
-   ```javascript
-   const uglify = require('gulp-uglify')
-   const babel = require('gulp-babel')
-   
-   const js = () => {
-       return gulp.src(path.js.src)
-           .pipe(babel({
-           	presets: ['@babel/env']
-       	}))
-           .pipe(uglify())
-           .pipe(gulp.dest(path.js.dest))
-           .pipe(connect.reload())
-   }
-   module.exports = {
-       html,
-       js
-   }
-   ```
+先ES6转ES5，然后再压缩，最后在导出那里加上js任务
 
-11. css任务压缩css：`npm i  gulp-clean-css -dev`
+安装压缩js的包`npm i gulp-uglify -dev` 
 
-   ```javascript
-   const cleanCss = require('gulp-clean-css')
-   
-   const css = () => {
-     return gulp.src(path.css.src)
-         .pipe(cleanCss())
-         .pipe(gulp.dest(path.css.dest))
-   }
-   module.exports = {
-       html,
-       js,
-       css
-   }
-   ```
+安装ES6转ES5的包`npm i gulp-babel @babel/core @babel/preset-env -dev`
 
-12. 给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
+```javascript
+const uglify = require('gulp-uglify')
+const babel = require('gulp-babel')
 
-    ```javascript
-    const cleanCss = require('gulp-clean-css')
-    const autoPrefixer = require('gulp-autoprefixer')
-    
-    const css = () => {
-        return gulp.src(path.js.src)
-            .pipe(autoprefixer({
-            	presets: ['@babel/env']
-        	}))
-          .pipe(cleanCss())
-          .pipe(gulp.dest(path.css.dest))
-    }
-    module.exports = {
-        html,
-        js,
-        css
-    }
-    ```
+const js = () => {
+    return gulp.src(path.js.src)
+        .pipe(babel({
+        	presets: ['@babel/env']
+    	}))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.js.dest))
+        .pipe(connect.reload())
+}
+module.exports = {
+    html,
+    js
+}
+```
+#### 三、css任务
 
-13. 如果用到sass来写样式，那么还要把css任务做进一步修改：
+压缩css：`npm i  gulp-clean-css -dev`
 
-    sass编译成成css：`npm i node-sass gulp-sass -dev` 
+```javascript
+const cleanCss = require('gulp-clean-css')
 
-    首先，**path对象里css的src属性路径要把后缀名css改成scss**，再修改css任务
+const css = () => {
+  return gulp.src(path.css.src)
+      .pipe(cleanCss())
+      .pipe(gulp.dest(path.css.dest))
+}
+module.exports = {
+    html,
+    js,
+    css
+}
+```
+#### 四、css前缀
 
-    ![](/img/article/gulp-path.png)
+给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
 
-    ```javascript
-    const cleanCss = require('gulp-clean-css')
-    const autoPrefixer = require('gulp-autoprefixer')
-    const sass = require('gulp-sass')
-    
-    const css = () => {
-        return gulp.src(path.js.src)
-        	.pipe(sass())
-            .pipe(autoprefixer({
-            	presets: ['@babel/env']
-        	}))
-           .pipe(cleanCss())
-           .pipe(gulp.dest(path.css.dest))
-    }
-    ```
+```javascript
+const cleanCss = require('gulp-clean-css')
+const autoPrefixer = require('gulp-autoprefixer')
 
-14. 开启服务器： `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
+const css = () => {
+    return gulp.src(path.js.src)
+        .pipe(autoprefixer({
+        	presets: ['@babel/env']
+    	}))
+      .pipe(cleanCss())
+      .pipe(gulp.dest(path.css.dest))
+}
+module.exports = {
+    html,
+    js,
+    css
+}
+```
+#### 五、使用sass
 
-    ```javascript
-    const connect = require('gulp-connect')
-    
-    const server = () => {
-        connect.server({
-            root: 'dist', // 项目根路径是dist
-            livereload: true, // 服务器支持热更新
-            port: 2333 // 配置端口号2333
+如果用到sass来写样式，那么还要把css任务做进一步修改：
+
+sass编译成成css：`npm i node-sass gulp-sass -dev` 
+
+首先，**path对象里css的src属性路径要把后缀名css改成scss**，再修改css任务
+
+![](/img/article/gulp-path.png)
+
+```javascript
+const cleanCss = require('gulp-clean-css')
+const autoPrefixer = require('gulp-autoprefixer')
+const sass = require('gulp-sass')
+
+const css = () => {
+    return gulp.src(path.js.src)
+    	.pipe(sass())
+        .pipe(autoprefixer({
+        	presets: ['@babel/env']
+    	}))
+       .pipe(cleanCss())
+       .pipe(gulp.dest(path.css.dest))
+}
+```
+#### 六、开启服务器
+
+ `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
+
+```javascript
+const connect = require('gulp-connect')
+
+const server = () => {
+    connect.server({
+        root: 'dist', // 项目根路径是dist
+        livereload: true, // 服务器支持热更新
+        port: 2333 // 配置端口号2333
+    })
+}
+```
+#### 七、删除dist
+
+由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
+
+```javascript
+const del = require('del')
+
+const clean = () => del('dist')
+```
+#### 八、文件移动
+
+还有一些图片或者引入的第三方的文件需要做一个移动处理
+
+```javascript
+// img任务：复制到dist里
+const img = () => gulp.src(path.img.src).pipe(gulp.dest(path.img.dest))
+
+// libs任务：文件的复制
+const libs = () => gulp.src(path.libs.src).pipe(gulp.dest(path.libs.dest))
+```
+#### 九、监听
+
+监听html、js和css文件的变化，重启对应任务，在被监听的任务后面都要重启服务器 
+
+```javascript
+// watch任务：监听一些文件的修改，一旦被修改了就自动重启对应的任务
+const watch = () => {
+    gulp.watch(path.html.src, html)
+    gulp.watch(path.css.src, css)
+    gulp.watch(path.js.src, js)
+}
+
+// 再在html、css和js任务后面都加上一句.pipe(connect.reload())，比如css任务改成这样：
+const css = () => {
+  return gulp.src(path.css.src)
+      .pipe(sass())
+      .pipe(cleanCss())
+      .pipe(gulp.dest(path.css.dest))
+      .pipe(connect.reload())
+}
+```
+#### 十、默认任务
+
+任务导出做一下修改，单个导出只能单个执行，所以我们可以把所有要执行的任务放在默认任务里，就只需要在命令行里执行gulp即可执行所有任务：导出默认任务流，先同步执行delDist，再异步执行其他任务
+
+```javascript
+module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, libs, server, watch))
+```
+#### 十一、跨域
+
+如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个插件：`npm i http-proxy-middleware -dev`
+
+```javascript
+const connect = require('gulp-connect')
+const { createProxyMiddleware } = require('http-proxy-middleware')
+
+const server = () => {
+  connect.server({
+    root: 'dist',
+    livereload: true,
+    port: 2333,
+    // 中间件：函数返回一个数组，数组配置跨域代理
+    middleware () {
+      return [
+        // 将以/api为开头的请求代理到域 http://localhost:80
+        createProxyMiddleware('/api', {
+          target: 'http://localhost:80',
+          changeOrigin: true
         })
+      ]
     }
-    ```
-
-15. 由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
-
-    ```javascript
-    const del = require('del')
-    
-    const clean = () => del(['dist'])
-    ```
-
-16. 还有一些图片或者引入的第三方的文件需要做一个移动处理
-
-    ```javascript
-    // img任务：复制到dist里
-    const img = () => gulp.src(path.img.src).pipe(gulp.dest(path.img.dest))
-    
-    // libs任务：文件的复制
-    const libs = () => gulp.src(path.libs.src).pipe(gulp.dest(path.libs.dest))
-    ```
-
-17. 监听html、js和css文件的变化，重启对应任务，在被监听的任务后面都要重启服务器 
-
-    ```javascript
-    // watch任务：监听一些文件的修改，一旦被修改了就自动重启对应的任务
-    const watch = () => {
-        gulp.watch(path.html.src, html)
-        gulp.watch(path.css.src, css)
-        gulp.watch(path.js.src, js)
-    }
-    
-    // 再在html、css和js任务后面都加上一句.pipe(connect.reload())，比如css任务改成这样：
-    const css = () => {
-      return gulp.src(path.css.src)
-          .pipe(sass())
-          .pipe(cleanCss())
-          .pipe(gulp.dest(path.css.dest))
-          .pipe(connect.reload())
-    }
-    ```
-
-18. 任务导出做一下修改，单个导出只能单个执行，所以我们可以把所有要执行的任务放在默认人任务里，就只需要在命令行里执行gulp即可执行所有任务：导出默认任务流，先同步执行clean，再异步执行其他任务
-
-    ```javascript
-    module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, libs, server, watch))
-    
-    ```
-
-19. 如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个中间件：`npm i http-proxy-middleware -dev`
-
-    ```javascript
-    const connect = require('gulp-connect')
-    const proxy = require('http-proxy-middleware')
-    
-    const server = () => {
-      connect.server({
-        root: 'dist',
-        livereload: true,
-        port: 8000,
-        // 中间件：函数返回一个数组，数组配置跨域代理
-        middleware: function () {
-          return [
-            // 将以/api为开头的请求代理到域 http://localhost:80
-            proxy('/api', {
-              target: 'http://localhost:80',
-              changeOrigin: true
-            })
-          ]
-        }
-      })
-    }
-    ```
-
+  })
+}
+```
 <br>
 
-现在，我们只需要在命令行里运行`gulp` 项目就能启动起来了，然后在浏览器里输入 `http://localhost:2333`就能访问主页啦，最后，贴上完整代码：🙆‍♂️🙆‍♂️🙆‍♂️
+现在，我们只需要在命令行里运行`gulp` 项目就能启动起来了，然后在浏览器里输入 `http://localhost:2333`就能访问主页啦。
+
+## 完整代码
+
+最后，贴上完整代码如下：🙆‍♂️🙆‍♂️🙆‍♂️
 
 ```javascript
 const gulp = require('gulp'),
@@ -304,10 +322,11 @@ const gulp = require('gulp'),
       uglify = require('gulp-uglify'),
       babel = require('gulp-babel'),
       connect = require('gulp-connect'),
-      sass = require('gulp-sass')
+      sass = require('gulp-sass'),
+      { createProxyMiddleware } = require('http-proxy-middleware')
 
 // 在每次开启新任务之前先把dist删掉
-const delDist = () => del(['dist'])
+const delDist = () => del('dist')
 
 // 先把所有的任务用到的文件源路径和目标路径做一个统一规划
 const path = {
@@ -382,7 +401,17 @@ const server = () => {
   connect.server({
     root: 'dist',
     livereload: true,
-    port: 1912
+    port: 2333,
+    // 中间件：函数返回一个数组，数组配置跨域代理
+    middleware () {
+      return [
+        // 将以/api为开头的请求代理到域 http://localhost
+        createProxyMiddleware('/api', {
+          target: 'http://localhost',
+          changeOrigin: true
+        })
+      ]
+    }
   })
 }
 
@@ -396,7 +425,6 @@ const watch = () => {
 // gulp.series 是同步执行任务，第一个执行完了才能执行第二个
 // gulp.parallel 是异步执行任务，多个任务同时运行
 module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, libs, server, watch))
-
 ```
 
 <br><br>
@@ -419,18 +447,18 @@ module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, 
     "gulp": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "del": "^5.1.0",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.2.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-connect": "^5.7.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
-    "node-sass": "^4.13.0",
-    "http-proxy-middleware": "^0.20.0"
+    "http-proxy-middleware": "^1.0.4",
+    "node-sass": "^4.14.1"
   }
 }
 ```
