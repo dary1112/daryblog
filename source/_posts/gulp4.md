@@ -48,7 +48,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 ## gulp使用
 
-### 准备工作
+### 一、准备工作
 
 1. 安装node环境：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')，下载LTS版本的即可
 
@@ -96,9 +96,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
        }
    }
    ```
-### 制定任务
-
-#### 一、html任务
+### 二、html任务
 
 执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
 
@@ -126,7 +124,7 @@ module.exports = {
 }
 ```
 
-#### 二、js任务
+### 三、js任务
 
 先ES6转ES5，然后再压缩，最后在导出那里加上js任务
 
@@ -152,7 +150,7 @@ module.exports = {
     js
 }
 ```
-#### 三、css任务
+### 四、css任务
 
 压缩css：`npm i  gulp-clean-css -dev`
 
@@ -170,7 +168,7 @@ module.exports = {
     css
 }
 ```
-#### 四、css前缀
+### 五、css前缀
 
 给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
 
@@ -192,7 +190,7 @@ module.exports = {
     css
 }
 ```
-#### 五、使用sass
+### 六、使用sass
 
 如果用到sass来写样式，那么还要把css任务做进一步修改：
 
@@ -217,7 +215,7 @@ const css = () => {
        .pipe(gulp.dest(path.css.dest))
 }
 ```
-#### 六、开启服务器
+### 七、开启服务器
 
  `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
 
@@ -232,7 +230,7 @@ const server = () => {
     })
 }
 ```
-#### 七、删除dist
+### 八、删除dist
 
 由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
 
@@ -241,7 +239,7 @@ const del = require('del')
 
 const clean = () => del('dist')
 ```
-#### 八、文件移动
+### 九、文件移动
 
 还有一些图片或者引入的第三方的文件需要做一个移动处理
 
@@ -252,7 +250,7 @@ const img = () => gulp.src(path.img.src).pipe(gulp.dest(path.img.dest))
 // libs任务：文件的复制
 const libs = () => gulp.src(path.libs.src).pipe(gulp.dest(path.libs.dest))
 ```
-#### 九、监听
+### 十、监听
 
 监听html、js和css文件的变化，重启对应任务，在被监听的任务后面都要重启服务器 
 
@@ -273,14 +271,14 @@ const css = () => {
       .pipe(connect.reload())
 }
 ```
-#### 十、默认任务
+### 十一、默认任务
 
 任务导出做一下修改，单个导出只能单个执行，所以我们可以把所有要执行的任务放在默认任务里，就只需要在命令行里执行gulp即可执行所有任务：导出默认任务流，先同步执行delDist，再异步执行其他任务
 
 ```javascript
 module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, libs, server, watch))
 ```
-#### 十一、跨域
+### 十二、跨域
 
 如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个插件：`npm i http-proxy-middleware -dev`
 
