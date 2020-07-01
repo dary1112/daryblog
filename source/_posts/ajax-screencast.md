@@ -1,7 +1,7 @@
 ---
-title: 文章系列 — 文章标题
+title: 原生ajax视频教程 —  B站
 date: 2020-07-01 11:58
-top: 2 // 置顶就留着
+top: 1
 
 categories:
 - 大前端
