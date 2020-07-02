@@ -108,28 +108,35 @@ function numCompany () {
 }
 var fn = numCompany()
 console.log(fn()) // 2
-
 ```
 
 ### 一、预解析
 
-预解析的时候变量提升，`fn`还是`undefined`，外层函数被声明，我们假设函数地址是`0x1001`，这个时候除了函数本身被创建，还有他的**作用域链对象**也同时被创建了，不过
+预解析的时候变量提升，`fn`还是`undefined`，外层函数被声明，我们假设函数地址是`0x1001`，这个时候除了函数本身被创建，还有他的**作用域链对象**也同时被创建了，不过此时只有栈底的一个`window`对象，如下图：
+
+![1-预解析](/img/article/closure-1-预解析.png '1-预解析')
 
 
 
+### 二、调用时
+
+当我们在调用外层函数`numCompany`时，函数的活动对象此时被创建并且压栈到作用域链对象里，在`numCompany`的活动对象里有一个局部函数`getNum`以及局部变量`n = 1`，`getNum`在此时被创建，与此同时`getNum`的作用域链对象也被创建，而他的作用域链对象的栈结构里已经有了`window`和`numCompany`的活动对象，如下图：
+
+![2-调用时](/img/article/closure-2-调用时.png '2-调用时')
 
 
 
+### 三、调用后
+
+当`numCompany`完成调用以后
+
+![3-调用后](/img/article/closure-3-调用后.png '3-调用后')
 
 
 
+![4-fn调用时](/img/article/closure-4-fn调用时.png '4-fn调用时')
 
 
 
-
-
-
-
-
-
+![5-fn调用后](/img/article/closure-5-fn调用后.png '5-fn调用后')
 
