@@ -195,7 +195,7 @@ for (var i = 0; i < list.length; i++) {
 
 ### 二、单例模式
 
-设计模式中的单例模式也是可以用闭包来实现的（饿汉单例）
+设计模式中的单例模式也是可以用闭包来实现的（懒汉单例）
 
 ```javascript
 var getInstance = (function () {
