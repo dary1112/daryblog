@@ -59,7 +59,7 @@ JS本身在ES6以前没有模块化的，ES6有模块化了，但是主流浏览
 
 ### ES6 Module
 
- 	浏览器都还不支持，但是可以借助像[webpack](https://www.webpackjs.com/  'https://www.webpackjs.com/')这样的打包工具来实现打包，从而使浏览器可以运行代码。详细用法可参照我的另一篇文章[锋利的ES6 — Module](http://www.xiongdalin.com/2020/06/16/ES6-module/ 'http://www.xiongdalin.com/2020/06/16/ES6-module/') 。
+ 	浏览器都还不支持，但是可以借助像[webpack](https://www.webpackjs.com/ 'https://www.webpackjs.com/')这样的打包工具来实现打包，从而使浏览器可以运行代码。详细用法可参照我的另一篇文章[锋利的ES6 — Module](http://www.xiongdalin.com/2020/06/16/ES6-module/ 'http://www.xiongdalin.com/2020/06/16/ES6-module/') 。
 
 > 另外：服务器端Node.js遵循commonJS规范，module.exports 导出模块，require引入模块。
 
