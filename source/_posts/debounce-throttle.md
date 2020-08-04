@@ -1,6 +1,6 @@
 ---
 title: 防抖和节流
-date: 2020-07-31 19:11
+date: 2020-08-04 18:00
 
 categories:
 - 大前端
@@ -110,9 +110,66 @@ tags:
 
  如果在项目中有需要用到的，可以直接安装单个的NPM模块。[throttle-debounce](https://github.com/niksy/throttle-debounce/ 'https://github.com/niksy/throttle-debounce')
 
+```javascript
+import { throttle, debounce } from 'throttle-debounce'
 
+const foo = () => console.log('foo..')
+const bar = () => console.log('bar..')
+
+const fooWrapper = throttle(200, foo)
+
+for (let i = 1; i < 10; i++) {
+  setTimeout(fooWrapper, i * 30)
+}
+
+// => foo 执行了三次
+// => foo..
+// => foo..
+// => foo..
+
+const barWrapper = debounce(200, bar)
+
+for (let i = 1; i < 10; i++) {
+  setTimeout(barWrapper, i * 30)
+}
+
+// => bar 执行了一次 
+// => bar..
+```
 
 
 
 ## 使用lodash
+
+```javascript
+import { debounce, throttle } from 'lodash'
+// 避免窗口在变动时出现昂贵的计算开销。
+jQuery(window).on('resize', debounce(calculateLayout, 150))
+ 
+// 当点击时 `sendMail` 随后就被调用。
+jQuery(element).on('click', debounce(sendMail, 300, {
+  'leading': true,
+  'trailing': false
+}))
+ 
+// 确保 `batchLog` 调用1次之后，1秒内会被触发。
+var debounced = debounce(batchLog, 250, { 'maxWait': 1000 })
+var source = new EventSource('/stream')
+jQuery(source).on('message', debounced)
+ 
+// 取消一个 trailing 的防抖动调用
+jQuery(window).on('popstate', debounced.cancel)
+
+// 避免在滚动时过分的更新定位
+jQuery(window).on('scroll', throttle(updatePosition, 100))
+ 
+
+
+// 点击后就调用 `renewToken`，但5分钟内超过1次。
+var throttled = throttle(renewToken, 300000, { 'trailing': false })
+jQuery(element).on('click', throttled)
+ 
+// 取消一个 trailing 的节流调用。
+jQuery(window).on('popstate', throttled.cancel)
+```
 
