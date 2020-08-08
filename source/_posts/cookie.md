@@ -192,7 +192,7 @@ console.log(document.cookie) // username=dary
 console.log(document.cookie) // username=dary; age=18
 ```
 
-多条cookie之间以`;&nbsp;` 隔开，注意：这里是分号和一个空格，这个对我们拆开每一条cookie非常重要。所以我们现在希望能把cookie每一条拆开，得到一个对象，这样就可以取得某一条cookie的值了，所以我们可以封装一个获取cookie的方法如下：
+多条cookie之间以`;  ` 隔开，注意：这里是**分号和一个空格**，这个对我们拆开每一条cookie非常重要。所以我们现在希望能把cookie每一条拆开，得到一个对象，这样就可以取得某一条cookie的值了，所以我们可以封装一个获取cookie的方法如下：
 
 ```javascript
 /** 获取某一条cookie
