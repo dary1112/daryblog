@@ -25,7 +25,7 @@ BOM 概念比较古老，但是一直没有被标准化，不过各主流浏览�
 
 
 
-![寄居蟹](/img/articles/BOM-寄居蟹.jpg '寄居蟹')
+![寄居蟹](/img/article/BOM-寄居蟹.jpg '寄居蟹')
 
 Javascript是一门脚本语言，它的运行需要依赖浏览器，所以我们也称它为宿主语言，浏览器就是它的寄宿对象，就跟寄居蟹一样。那么作为寄居蟹他是不能独立生存的，需要依赖螺壳为寄体，那对于寄居蟹而言它就需要明确知道它需要的螺壳有多大，什么形状，是否坚硬等信息。作为Javascript来讲，同样的道理，要在浏览器里运行，就需要知道浏览器相关的一些信息，所以，寄居蟹之于螺壳就等同于Javascript之于浏览器。
 
@@ -39,15 +39,11 @@ Javascript是一门脚本语言，它的运行需要依赖浏览器，所以我�
 
 ## window
 
-window是全局浏览器内置顶级对象
-
-##### 全局变量和全局函数默认是挂在window下的
-
-##### window上的各种属性，比如：name、length、top，一般不要用作全局变量
-
-window.innerWidth 获取浏览器内容宽度
-
-window.innerHeight  获取浏览器内容高度
+1. window是全局浏览器内置顶级对象
+2. 全局变量和全局函数默认是挂在window下的
+3. window上的各种属性，比如：name、length、top，一般不要用作全局变量
+4. window.innerWidth 获取浏览器内容宽度
+5. window.innerHeight  获取浏览器内容高度
 
 ### window下的子对象
 
