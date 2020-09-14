@@ -1,6 +1,6 @@
 ---
 title: JavaScript对象 — Date日期对象
-date: 2020-09-08 12:11
+date: 2020-09-14 17:31
 
 categories:
 - 大前端
@@ -48,7 +48,7 @@ var date = new Date(2020,8,9,12,13,14) // 2020年9月9日12点13分14秒
 
 Date对象提供了一系列获取时间信息的API。
 
-以笔者写文章的时间：`2020-09-11 16:31:43`为例：
+以笔者写文章的时间：`2020-09-14 17:31:43`为例：
 
 #### getTime
 
@@ -57,7 +57,7 @@ Date对象提供了一系列获取时间信息的API。
 > 时间戳是指格林威治时间自1970年1月1日（00:00:00 GMT）至当前时间的总毫秒数。
 
 ```javascript
-console.log(new Date().getTime()) // 1599813080292
+console.log(new Date().getTime()) // 1600075903652
 ```
 
 #### <font color="#999">getYear</font>
@@ -85,13 +85,13 @@ console.log(new Date().getMonth()) // 8
 #### getDate
 
 ```javascript
-console.log(new Date().getDate()) // 11
+console.log(new Date().getDate()) // 14
 ```
 
 #### getDay
 
 ```javascript
-console.log(new Date().getDay()) // 5
+console.log(new Date().getDay()) // 1
 ```
 
 > day的取值范围为0-6分别代表星期天到星期六。
@@ -99,7 +99,7 @@ console.log(new Date().getDay()) // 5
 #### getHours
 
 ```javascript
-console.log(new Date().getHours()) // 16
+console.log(new Date().getHours()) // 17
 ```
 
 #### getMinutes
@@ -160,4 +160,48 @@ console.log(new Date().getMilliseconds()) // 652
   
 
 ## 转换
+
+以笔者写文章的时间：`2020-09-14 17:31:43`为例：
+
+#### 日期转为字符串
+
+```javascript
+var date = new Date()
+
+console.log(date.toString()) // Mon Sep 14 2020 17:31:43 GMT+0800 (中国标准时间)
+console.log(date.toDateString()) // Mon Sep 14 2020
+console.log(date.toTimeString()) // 17:31:43 GMT+0800 (中国标准时间)
+
+console.log(date.toLocaleString()) // 2020/9/14 下午5:31:43
+console.log(date.toLocaleDateString()) // 2020/9/14
+console.log(date.toLocaleTimeString()) // 下午5:31:43
+```
+
+#### 时区转换
+
+**toUTCString**：转为标准时区的时间。
+
+> 由于地球是球形而且会自转，每个地区时间都会有所差异，地理学家把地球划分了24个时区，相邻时区之间间隔1小时，其中，本初子午线所在的一区叫中区或零时区，中国面积广大，东西横跨经度64°，分布在从东五区到东九区的五个时区内。为了便于东西间的联系，现在全国都采用东八区的标准时间，也就是“北京时间”，作为全国统一的时刻。所以北京时间比标准时间提前8个小时。
+
+```javascript
+console.log(date.toUTCString()) // Mon, 14 Sep 2020 09:31:43 GMT
+```
+
+
+
+## moment.js
+
+对于项目中的日期处理，可以引入`moment.js`库：[http://momentjs.cn/](http://momentjs.cn/ 'http://momentjs.cn/')。
+
+这个库里封装了很多日期操作的API，比如：
+
+* `moment()` 可以获取和设置日期信息
+* `moment().dayOfYear(100)` 可以用于获取第100天的日期
+* `moment().dayOfYear()` 可以用于获取当前是这一年的第几天
+* `moment.utc()` 转为标准时区显示
+* `moment().add()`可以在当前日期基础上加上一些时间
+* `moment().format()` 可以格式化日期对象，按照需要的格式来显示
+* `moment.locale()`设置语言环境（全球化）
+
+这里只是列举了一小部分，更多的可以参阅官网文档[http://momentjs.cn/docs/](http://momentjs.cn/docs/ 'http://momentjs.cn/docs/')。
 
