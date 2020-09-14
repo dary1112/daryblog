@@ -189,7 +189,7 @@ console.log(date.toUTCString()) // Mon, 14 Sep 2020 09:31:43 GMT
 
 
 
-## moment.js
+## 日期处理类库
 
 对于项目中的日期处理，可以引入`moment.js`库：[http://momentjs.cn/](http://momentjs.cn/ 'http://momentjs.cn/')。
 
