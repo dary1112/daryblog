@@ -193,7 +193,7 @@ console.log(date.toUTCString()) // Mon, 14 Sep 2020 09:31:43 GMT
 
 对于项目中的日期处理，可以引入`moment.js`库：[http://momentjs.cn/](http://momentjs.cn/ 'http://momentjs.cn/')。
 
-这个库里封装了很多日期操作的API，比如：
+这个库封装了很多日期操作的API，比如：
 
 * `moment()` 可以获取和设置日期信息
 * `moment().dayOfYear(100)` 可以用于获取第100天的日期
