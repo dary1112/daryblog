@@ -52,7 +52,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 1. 安装node环境：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')，下载LTS版本的即可
 
-2. 在任意位置打开命令行工具，使用npm全局安装gulp命令行工具 `npm i gulp -g`，安装完成以后执行`gulp -v` 只要看到版本号就说明安装成功
+2. 在任意位置打开命令行工具，使用npm全局安装gulp命令行工具 `npm i gulp-cli -g`，安装完成以后执行`gulp -v` 只要看到版本号就说明安装成功
 
 3. 创建项目目录，一般由小写字母加数字构成
 
@@ -62,7 +62,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
    ![gulp项目目录结构](/img/article/gulp项目目录结构.png)
 
-6. 在当前项目局部安装gulp， `npm i gulp -dev`，高版本npm会自动帮我们 --save 保存在package.json文件的依赖里，-dev的意思是安装成开发依赖，也就是说这个包只有开发环境需要，线上产品环境不需要。这样的话即使删除node_modules也可以直接运行 `npm i` 就可以根据package.json里面的所有依赖包信息把这些依赖包全局安装进来
+6. 在当前项目局部安装gulp， `npm i gulp -D`，高版本npm会自动帮我们 --save 保存在package.json文件的依赖里，但是现在新版本的npm不需要加这个参数了，会默认保存；-D的意思是安装成开发依赖，也就是说这个包只有开发环境需要，线上产品环境不需要。这样的话即使删除node_modules也可以直接运行 `npm i` 或者`yarn`就可以根据package.json里面的所有依赖包信息把这些依赖包全局安装进来
 
 7. 创建一个`gulpfile.js`文件，**注意：文件名一定要叫`gulpfile`**！！！然后在这个文件里制定各种任务。
 
@@ -100,7 +100,7 @@ node官网：[https://nodejs.org](https://nodejs.org/en/ 'https://nodejs.org')�
 
 ### 二、html任务
 
-执行`npm i gulp-htmlmin -dev`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
+执行`npm i gulp-htmlmin -D`安装压缩html的插件，然后制定压缩任务，再通过module.exports 把这个任务暴露出去，就可以执行`gulp html` 来运行这个任务了
 
 ```javascript
 const gulp = require('gulp')
@@ -130,9 +130,9 @@ module.exports = {
 
 先ES6转ES5，然后再压缩，最后在导出那里加上js任务
 
-安装压缩js的包`npm i gulp-uglify -dev` 
+安装压缩js的包`npm i gulp-uglify -D` 
 
-安装ES6转ES5的包`npm i gulp-babel @babel/core @babel/preset-env -dev`
+安装ES6转ES5的包`npm i gulp-babel @babel/core @babel/preset-env -D`
 
 ```javascript
 const uglify = require('gulp-uglify')
@@ -154,7 +154,7 @@ module.exports = {
 ```
 ### 四、css任务
 
-压缩css：`npm i  gulp-clean-css -dev`
+压缩css：`npm i  gulp-clean-css -D`
 
 ```javascript
 const cleanCss = require('gulp-clean-css')
@@ -172,7 +172,7 @@ module.exports = {
 ```
 ### 五、css前缀
 
-给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -dev`
+给需要兼容的css样式自动加上兼容性前缀：`npm i gulp-autoprefixer -D`
 
 ```javascript
 const cleanCss = require('gulp-clean-css')
@@ -181,7 +181,7 @@ const autoPrefixer = require('gulp-autoprefixer')
 const css = () => {
     return gulp.src(path.js.src)
         .pipe(autoprefixer({
-        	presets: ['@babel/env']
+        	cascade: false
     	}))
       .pipe(cleanCss())
       .pipe(gulp.dest(path.css.dest))
@@ -196,7 +196,7 @@ module.exports = {
 
 如果用到sass来写样式，那么还要把css任务做进一步修改：
 
-sass编译成成css：`npm i node-sass gulp-sass -dev` 
+sass编译成成css：`npm i node-sass gulp-sass -D` 
 
 首先，**path对象里css的src属性路径要把后缀名css改成scss**，再修改css任务
 
@@ -219,7 +219,7 @@ const css = () => {
 ```
 ### 七、开启服务器
 
- `npm i gulp-connect -dev`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
+ `npm i gulp-connect -D`项目根目录是dist，所以项目中的一切路径都写成/开头的绝对路径，/指的就是dist，避免模块化之后相对位置发生变变化导致路径错误
 
 ```javascript
 const connect = require('gulp-connect')
@@ -234,7 +234,7 @@ const server = () => {
 ```
 ### 八、删除dist
 
-由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -dev`
+由于dist目录是每次执行任务时自动生成的，所以为了避免上一次旧的代码对新的代码造成影响，我们一般会在开启任务之前先把dist目录删掉： `npm i del -D`
 
 ```javascript
 const del = require('del')
@@ -282,7 +282,7 @@ module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, img, 
 ```
 ### 十二、跨域
 
-如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个插件：`npm i http-proxy-middleware -dev`
+如果需要跨域访问其他接口，则需要配置跨域，需要依赖另一个插件：`npm i http-proxy-middleware -D`
 
 ```javascript
 const connect = require('gulp-connect')
