@@ -1,6 +1,6 @@
 ---
-title: js算法 — 数组扁平化
-date: 2020-10-21 17:08
+title: javascript算法 — 数组扁平化
+date: 2020-10-21 17:12
 
 categories:
 - 大前端
