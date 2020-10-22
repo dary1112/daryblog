@@ -22,11 +22,10 @@ tags:
 判断一个字符串是否以某个子字符串开头
 
 ```javascript
-var str = '用良心做教育，做最真实的自己'
-str.startsWith('用良心')    // true
-str.startsWith('做教育')    // false
-str.startsWith('做教育', 3) // true
-str.startsWith('真实', -5)  // true
+var str = '代码不是万能的，但不写代码是万万不能的'
+str.startsWith('代码')    // true
+str.startsWith('不写代码')    // false
+str.startsWith('万能的', 4) // true
 ```
 
 
@@ -36,10 +35,10 @@ str.startsWith('真实', -5)  // true
 判断一个字符串是否以某个子字符串结尾
 
 ```javascript
-var str = '用良心做教育，做最真实的自己'
-str.endsWith('自己')     // true
+var str = '代码不是万能的，但不写代码是万万不能的'
+str.endsWith('不能的')     // true
 str.endsWith('真实')     // false
-str.endsWith('真实', 11) // true
+str.endsWith('万万', 16) // true
 ```
 
 
@@ -133,9 +132,9 @@ console.log(str) // Hello dary,you are 19 years old
 将unicode字符串转换为普通字符串（正规化）
 
 ```javascript
-str = '\u5343\u950b\u6559\u80b2'
+str = '\u718a\u5927\u6797'
 
-str.normalize() // 千锋教育
+str.normalize() // 熊大林
 
 ```
 
