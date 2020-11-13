@@ -1,13 +1,14 @@
-title: Javascript算法 — 数组去重
-date: 2020-03-23 12:11
-top: 1 // 置顶就留着
+---
+title:  Javascript算法 — 数组去重
+date: 2020-11-13 16:01
 
 categories:
 - 大前端
 tags:
 - JavaScript
+---
 
-**本文介绍js中数组去重的几种常用方式**
+**本文介绍js中数组去重的几种常用方式。**
 
 <br>
 
@@ -16,6 +17,8 @@ tags:
 <br>
 
 作为初级前端面试，一般算法问题考的不多，但是如果考算法的话，数组去重被问到的概率是非常大的，本文介绍几种去重方案。
+
+
 
 ## 一、双重for
 
@@ -107,15 +110,15 @@ console.log(unique4([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 
 
-## 五、includes
+## 五、lastIndexOf
 
-利用数组原型对象上的includes方法。
+和方法四几乎一致：
 
 ```javascript
 function unique5 (arr) {
   var newArr = []
   for (var i = 0; i < arr.length; i++) {
-    if (!newArr.includes(arr[i])) {
+    if (newArr.lastIndexOf(arr[i]) === -1) {
       newArr.push(arr[i])
     }
   }
@@ -127,16 +130,18 @@ console.log(unique5([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 
 
-## 六、filter + includes
+## 六、includes
 
-利用数组原型对象上的 `filter` 和`includes`方法，如果`newArr`已存在该元素，`filter`里就`return false`，否则就`push`并返回一个`true`（我这里返回的是`push`的返回值即数组新的`length`）。
+利用数组原型对象上的includes方法。
 
 ```javascript
-function unique6(arr) {
+function unique6 (arr) {
   var newArr = []
-  newArr = arr.filter(function (item) {
-    return newArr.includes(item) ? false : newArr.push(item)
-  })
+  for (var i = 0; i < arr.length; i++) {
+    if (!newArr.includes(arr[i])) {
+      newArr.push(arr[i])
+    }
+  }
   return newArr
 }
 console.log(unique6([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
@@ -145,15 +150,15 @@ console.log(unique6([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 
 
-## 七、forEach + includes
+## 七、filter + includes
 
-利用数组原型对象上的 forEach 和 includes方法，和方法六几乎相同。
+利用数组原型对象上的 `filter` 和`includes`方法，如果`newArr`已存在该元素，`filter`里就`return false`，否则就`push`并返回一个`true`（我这里返回的是`push`的返回值即数组新的`length`）。
 
 ```javascript
 function unique7 (arr) {
   var newArr = []
-  arr.forEach(item => {
-    return newArr.includes(item) ? '' : newArr.push(item)
+  newArr = arr.filter(function (item) {
+    return newArr.includes(item) ? false : newArr.push(item)
   })
   return newArr
 }
@@ -163,12 +168,30 @@ console.log(unique7([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 
 
-## 八、splice
+## 八、forEach + includes
 
-利用数组原型对象上的 splice 方法。
+利用数组原型对象上的 forEach 和 includes方法，和方法七几乎相同。
 
 ```javascript
 function unique8 (arr) {
+  var newArr = []
+  arr.forEach(item => {
+    return newArr.includes(item) ? '' : newArr.push(item)
+  })
+  return newArr
+}
+console.log(unique8([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
+
+```
+
+
+
+## 九、splice
+
+利用数组原型对象上的 splice 方法。当查找到相同元素使用`splice`删除，删除之后需要`j--`，否则回跳过一次比较。
+
+```javascript
+function unique9 (arr) {
   for (var i = 0; i < arr.length; i++) {
     for (var j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
@@ -179,72 +202,31 @@ function unique8 (arr) {
   }
   return arr
 }
-console.log(unique8([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
+console.log(unique9([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 ```
 
-**Methods 9**: 利用数组原型对象上的 lastIndexOf 方法。
+
+
+## 十、Set
+
+`Set`数据结构是`ES6`新增的一种数据解构，它类似于数组，其成员的值都是唯一的，本身就不允许重复。我们可以把数组转换为`Set`类型再重新转回为数组即可完成去重。
+
+```javascript
+function unique10 (arr) {
+  return Array.from(new Set(arr))
+}
+console.log(unique10([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 ```
-        function unique9(arr) {
 
+ 也可以这么写：
 
-
-            var res = [];
-
-
-
-            for (var i = 0; i < arr.length; i++) {
-
-
-
-                res.lastIndexOf(arr[i]) !== -1 ? '' : res.push(arr[i]);
-
-
-
-            }
-
-
-
-            return res;
-
-
-
-        }
-
-
-
-        console.log(unique9([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
-
-
-
-        // 结果是[1, 2, 3, 5, 6, 7, 4]
-```
-
-**Methods 10**: 利用 ES6的set 方法。
+```javascript
+function unique10 (arr) {
+  return [...new Set(arr))]
+}
+console.log(unique10([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 ```
-        function unique10(arr) {
 
-
-
-            //Set数据结构，它类似于数组，其成员的值都是唯一的
-
-
-
-            return Array.from(new Set(arr)); // 利用Array.from将Set结构转换成数组
-
-
-
-        }
-
-
-
-        console.log(unique10([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
-
-
-
-        // 结果是[1, 2, 3, 5, 6, 7, 4]
-```
-
- 
