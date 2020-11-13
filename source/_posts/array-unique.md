@@ -230,3 +230,16 @@ console.log(unique10([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
 
 ```
 
+
+
+## 十一、reduce
+
+```javascript
+function unique11 (arr) {
+  return arr.reduce((newArr, current) => {
+    return newArr.includes(current) ? newArr : newArr.concat(current)
+  }, [])
+}
+console.log(unique11([1, 2, 2, 2, 3, 1, 12, 7, 12])) // [1, 2, 3, 12, 7]
+```
+
