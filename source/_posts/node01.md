@@ -44,7 +44,47 @@ tags:
   - 操作内容
     - 后端代码
     - 数据库
-- 也就是说，node 我们不需要解决兼容问题，不需要 DOM 和 BOM，只关注业务逻辑就可以了
+- 也就是说，node 我们不需要解决兼容问题，不需要 DOM 和 BOM（但是定时器`setTimeout`和`setInterval`对其做了特殊处理，在node里可以使用），只关注业务逻辑就可以了
+
+
+
+### node历史
+
+![Ryan Dahl](/img/article/RyanDahl.gif 'Ryan Dahl')
+
+  他的工作是用C/C++写高性能Web服务。对于高性能，异步IO、事件驱动是基本原则，但是用C/C++写就太痛苦了， 于是这位仁兄开始设想用高级语言开发Web服务。他评估了很多种高级语言，发现很多语言虽然同时提供了同步IO和异步IO，但是开发人员一旦用了同步IO，他们就再也懒得写异步IO了，所以，最终，Ryan瞄向了JavaScript。
+
+在2009年，Ryan正式推出了基于JavaScript语言和V8引擎的开源Web服务器项目，命名为Node.js。
+
+
+
+### node.js能做哪些事
+
+1. 处理文件与数据库
+2. 与互联网进行沟通，以标准化的格式处理请求并发送回答（处理客户端请求）
+3. 用来执行编译 CSS 预编译语言、预编译、压缩、混淆 JS、压缩图片、reload、deploy 等工程化任务
+
+
+
+### node.js的优点
+
+1. 处理高并发场景性能更高
+
+   Java 1G 服务器 每个客户端连接耗费2M资源 1024=2^10
+
+   node 1G 服务器 动态分配
+
+2. 采用事件驱动、异步编程，为网络服务而设计
+
+3. 轻量高效，运行速度是PHP的86倍
+
+4. 包和模块
+
+5. 便于前端学习
+
+6. 适用于I/O密集型的应用，不适用于CPU密集型的应用
+
+
 
 ## 下载 node 安装包
 
@@ -60,13 +100,15 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
 
   因为 二进制文件 是一个简单版，我们需要自己配置 **环境变量** 才可以使用
 
-## 安装 node 环境
+
+
+## 安装 node
 
 下载好以后，我们直接把下载好的文件双击运行，全部下一步，默认装C盘即可
 
 ![node安装](/img/article/node安装.png 'node安装')
 
-## 检测安装环境
+### 检测安装环境
 
 检测安装是否成功
 
@@ -82,7 +124,7 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
 
    ![cmd node版本检测](/img/article/node版本检测.png 'cmd node版本检测')
 
-   ![powershell node版本检测.png](/img/article/powershell node版本检测.png 'powershell node版本检测.png')
+   ![powershell node版本检测.png](/img/article/powershellNode版本检测.png 'powershell node版本检测.png')
 
 3. 然后再命令行写入一个指令
 
@@ -153,155 +195,9 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
   - Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
     - 我们的 node 安装完毕以后，就在命令行提供了一个基于 Chrome V8 引擎的运行环境
     - 在这个环境中运行 javascript 代码
-    - 这个就是 node.js
+    - node.js这个环境本身是用C++开发的，用来运行 javascript
 
-# 常用的 LINUX 操作
 
-- 什么是 LINUX 操作
-- 其实就是在命令行使用指令来操作我们的电脑
-- 因为我们的 node 就是在命令行运行 js
-- 所以我们要了解一些常用的命令行指令
-
-## 目录操作
-
-- 目录操作就是操作我们的命令行路径
-
-  1. 查看当前目录下所有文件
-
-     ```bash
-     dir
-     ```
-
-  2. 以树状结构展示当前目录下的所有文件及子目录下的所有文件
-
-     ```bash
-     tree
-     ```
-
-  3. 进入当前目录下的某一个目录
-
-     ```bash
-     cd 文件夹名称
-     ```
-
-  4. 返回上一级目录
-
-     ```bash
-     cd ..
-     ```
-
-  5. 切换盘符
-
-     ```bash
-     # 盘符:
-     d:
-     ```
-
-## 文件操作
-
-- 文件操作就是通过指令创建文件或者文件夹
-
-  1. 创建文件夹
-
-     ```bash
-     # 表示在当前目录下创建一个叫做 test 的文件夹
-     md test
-     ```
-
-  2. 移除文件夹
-
-     ```bash
-     # 表示移除当前文件夹下的 test 文件夹
-     rd test
-     ```
-
-  3. 复制文件夹
-
-     ```bash
-     # 表示复制一份 test 文件夹起名为 test2
-     xcopy test test2
-     ```
-
-  4. 创建文件
-
-     ```bash
-     # 表示在当前目录下创建一个叫做 index.js 的文件
-     type nul> index.js
-     ```
-
-  5. 拷贝一份文件
-
-     ```bash
-     # 表示复制一份 index.js 文件起名为 ceshi.js
-     copy index.js ceshi.js
-     ```
-
-  6. 向文本中写入内容
-
-     ```bash
-     # 表示向 index.js 中写入一段文本 console.log('hello world')
-     echo console.log("hello world") > index.js
-     ```
-
-  7. 查看文件内的文本内容
-
-     ```bash
-     # 表示查看 index.js 文件中的文本内容是什么
-     type index.js
-     ```
-
-  8. 给文件或者目录重命名
-
-     ```bash
-     # 表示把 index.js 更名为 abc.js
-     ren index.js abc.js
-     ```
-
-  9. 删除文件
-
-     ```bash
-     # 表示把当前目录下的 index.js 删除
-     del index.js
-     ```
-
-  10. 移动文件或文件夹
-
-      ```bash
-      # 表示把当前目录下的 index.js 文件移动到当前目录下的 a 文件夹下
-      move index.js a
-      ```
-
-## 其他指令
-
-- 做一些其他事情的时候使用的
-
-  1. 清屏
-
-     ```bash
-     # 表示把当前屏幕的所有内容都清除
-     cls
-     ```
-
-  2. 查看当前电脑 IP 信息
-
-     ```bash
-     # 表示查看当前电脑的 IP 信息
-     ipconfig
-     ```
-
-  3. 测试某一个链接地址的网速
-
-     ```bash
-     # 表示查看访问 百度 网站的速度
-     ping www.baidu.com
-     ```
-
-  4. 查看电脑信息
-
-     ```bash
-     # 表示查看当前电脑的信息
-     systeminfo
-     ```
 
 # NODE 的导入导出
 
@@ -666,7 +562,7 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
   - 而且相对时间比较长
 - `nrm` 就是一个用来切换 `npm` 下载地址的工具（切换镜像源工具）
 
-## 安装 NRM
+### 安装 NRM
 
 - `nrm` 如果想使用，那么需要我们自己安装一下
 
@@ -699,7 +595,7 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
 
 - 能出现版本号，表示安装成功
 
-## 使用 nrm
+### 使用 nrm
 
 - nrm 里面存着好几个镜像源地址
 - 我们要挑一个比较快的使用
@@ -713,9 +609,11 @@ node的版本号是由三部分组成的，如：12.14.1，这三部分是有各
   nrm test
   ```
 
+![nrm test](/img/article/nrmTest.png 'nrm test')
+
 ### 切换镜像源
 
-- 我们检测完毕以后，就知道哪个比较快了
+- 我们检测完毕以后，发现taobao镜像源比较快，连接只需要111ms
 
 - 我们就使用指令切换一下镜像源地址就好了
 
@@ -733,3 +631,43 @@ npm install cnpm -g --registry=https://registry.npm.taobao.org
 ```
 
 然后所有的npm命令都可以使用cnpm来代替啦
+
+
+
+## NVM
+
+一般来讲，一台电脑我们只能安装一个node，但是由于node版本的差异不同项目可能会使用不同版本的node，如果同时经手多个项目我们就需要在一台机器上安装多种不同版本的node，并且可以非常方便的完成版本切换，那么我们可以使用**NVM**
+
+windows下载地址：[https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
+
+mac使用brew直接安装即可
+
+### 使用NVM
+
+先检测我们已经安装过的node版本，使用`nvm ls`命令
+
+![nvm ls](/img/article/nvmLs.png 'nvm ls')
+
+如果我们想使用其他版本，可以使用`nvm install [版本号]`来安装。
+
+```bash
+# 比如我要安装12.19.1的node
+nvm install 12.19.1
+```
+
+然后再切换过去
+
+```bash
+# 将node版本切换为12.19.1
+nvm use 12.19.1
+```
+
+此时再执行
+
+```bash
+node -v
+# 这时出来的版本号就是 12.19.1 了
+```
+
+
+
