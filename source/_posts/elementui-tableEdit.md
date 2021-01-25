@@ -1,5 +1,5 @@
 ---
-title: 使用element-ui完成表格批量编辑
+title: 使用Element-UI完成表格批量编辑
 date: 2021-01-19 21:52
 
 categories:
