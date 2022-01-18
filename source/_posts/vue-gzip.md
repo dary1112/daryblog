@@ -68,6 +68,8 @@ module.exports = {
 
 这个配置花了我很多时间，网上写的基本都不全甚至是错误的，按照我下面的步骤保证可以实现效果。
 
+
+
 ### 1. 检查nginx模块
 
 首先要检查一下nginx的模块，找到nginx的q启动文件，我的是`/usr/sbin/nginx`，如果你找不到可以使用`ps -ef | grep nginx`命令找到master进程所在的目录，进入sbin目录然后执行`./nginx -V`，注意是大写的V，查看结果如下：
@@ -77,6 +79,8 @@ module.exports = {
 
 
 第一行是nginx的版本，我的是1.16.1，重点是最后一行，我的nginx安装了很多模块，其中我们需要的就是红框部分`--with-http_gzip_static_module`，有的话那就不需要下面的步骤了，可以直接跳到第2步，如果没有那就继续往下看。
+
+
 
 #### 1.1 加入模块重新编译
 
@@ -96,6 +100,8 @@ module.exports = {
 ./configure --prefix=/usr/share/nginx --with-http_gzip_static_module
 ```
 
+
+
 #### 1.2 安装
 
 执行命令
@@ -106,6 +112,8 @@ make
 
 进行安装
 
+
+
 #### 1.3 备份
 
 为了确保安全，将旧的nginx做一个备份（目录如果不一样记得更换）
@@ -114,7 +122,9 @@ make
 cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak
 ```
 
-### 1.4 覆盖原来的nginx
+
+
+#### 1.4 覆盖原来的nginx
 
 先把nginx服务停止掉
 
@@ -130,6 +140,8 @@ ps -ef | grep nginx
 cp ./objs/nginx /usr/local/nginx/sbin/
 ```
 
+
+
 #### 1.5 验证
 
 查看模块
@@ -139,6 +151,8 @@ cp ./objs/nginx /usr/local/nginx/sbin/
 ```
 
 如果出现 `gzip_module`说明安装成功。
+
+
 
 ### 2. 添加gzip配置
 
