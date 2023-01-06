@@ -92,6 +92,12 @@ export default {
 
 ### JS
 
+> 引入
+
+```javascript
+import WaveSurfer from 'wavesurfer.js'
+```
+
 > 在上面 `initVideo` 方法中加上如下对声纹图初始化的代码
 
 ```javascript
@@ -110,8 +116,10 @@ this.wavesurfer = WaveSurfer.create({
 this.wavesurfer.load('src')
 this.wavesurfer.on('ready', () => {
   this.wavesurfer.setMute(true) // 静音，仅保留视频自带的音频即可
-})
+}
 ```
+
+![声纹图示意图](/img/article/videojs.png '声纹图示意图')
 
 ## 三、视频和声纹图同歩
 
@@ -306,7 +314,6 @@ this.myPlayer.volume = value //音量（0-1）
 this.myPlayer.muted = value //静音（true为静音，false取消静音）
 ```
 
-
 ## 五、附录2：wavesurfer.js 常用功能
 
 ### 1. option配置项
@@ -336,7 +343,6 @@ this.myPlayer.muted = value //静音（true为静音，false取消静音）
 * progressColor：光标后面波形部分的填充颜色。当progressColor和waveColor相同时，根本不会渲染进度波
 * waveColor：光标后波形的填充颜色
 * responsive：如果设置为true调整波形大小，则在调整窗口大小时。默认情况下，这是使用 100 毫秒超时去抖动的。如果此参数是一个数字，则表示该超时。
-
 
 ### 2.常用方法
 
@@ -392,7 +398,6 @@ this.wavesurfer.zoom(pxPerSec) // 水平放大和缩小波形。该参数是每�
 ### 3. 常用事件
 
 > 使用on()和un() 方法订阅和取消订阅各种播放器事件
-
 
 * audioprocess– 在音频播放时持续触发。也在寻找上火。
 * dblclick – 双击实例时。
